@@ -132,10 +132,10 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   vertical-align: baseline;
 }
 .hero__subtitle {
-  margin-top: clamp(8px, 1.2vw, 20px);
+  margin-top: clamp(8px, 1.2vw, 44px);
   font-family: var(--ff-mono);
-  font-size: clamp(10px, 1vw, 14px);
-  letter-spacing: .65em;
+  font-size: clamp(10px, 1vw, 18px);
+  letter-spacing: .3em;
   text-transform: uppercase;
   color: rgba(255,255,255,.88);
   text-shadow: 0 1px 12px rgba(0,0,0,.3);
