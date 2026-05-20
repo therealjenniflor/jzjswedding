@@ -5,7 +5,7 @@ export default function Hero() {
       <div className="hero__overlay"></div>
       <div className="hero__inner">
         <h1 className="hero__names">
-          Jennifer&nbsp;<span className="hero__amp">&amp;</span>&nbsp;Jhonatan
+          Jennifer <span className="hero__amp">&amp;</span> Jhonatan
         </h1>
         <div className="hero__subtitle">Are getting married!</div>
       </div>

@@ -674,11 +674,26 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 
 /* ─── Stay Tuned ─────────────────────────────────────────── */
 .stay-tuned-section {
-  background: #120a06 url('/images/stay-tuned.png') center center / cover no-repeat;
+  background: #120a06;
   color: #f5ecdc;
-  padding: 160px 56px;
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+.stay-tuned__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  z-index: 0;
+}
+.stay-tuned__content {
+  position: relative;
+  z-index: 1;
+  padding: 160px 56px;
 }
 .stay-tuned__rule {
   display: flex;
@@ -829,6 +844,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 900px) {
   .date-card__grid { grid-template-columns: 1fr; }
+  .date-card__photo-inner { height: 70vh; }
   .the-day__grid   { grid-template-columns: repeat(3, 1fr); }
   .other-details__grid { grid-template-columns: 1fr; }
   .stay-section__grid  { grid-template-columns: 1fr; }
@@ -840,12 +856,68 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
     padding-left: 24px;
     padding-right: 24px;
   }
-  .hero__inner { padding: 80px 24px 100px; }
+  .hero__inner { padding: 7% 6% 0; }
   .hero__cartouche { padding: 48px 24px 40px; }
   .hero__names { font-size: 60px; }
+  .date-card__calla { left: -20px; width: 20%; }
 }
+
 @media (max-width: 560px) {
+  /* Hero */
+  .hero__names {
+    font-size: clamp(32px, 9vw, 52px);
+    white-space: normal;
+    line-height: 1.1;
+  }
+  .hero__amp { font-size: clamp(36px, 10vw, 58px); }
+  .hero__inner { padding: 7% 5% 0; }
+
+  /* Date card */
+  .date-card-section { padding: 60px 16px; }
+  .date-card { padding: 40px 0; }
+  .date-card__photo-inner { height: 60vh; }
+  .date-card__calla { display: none; }
+  .date-card__date { font-size: 64px; }
+  .date-card__venue {
+    font-size: clamp(22px, 6.5vw, 40px);
+    white-space: normal;
+  }
+  .date-card__at { font-size: 24px; margin: 18px 0; }
+  .date-card__location { font-size: 11px; letter-spacing: .25em; }
+
+  /* Nuestro Día */
+  .nuestro-dia-section { padding: 60px 16px; }
+  .nuestro-dia__content { padding: 16px 20px 24px; }
+  .nuestro-dia__title { font-size: clamp(44px, 12vw, 68px); }
+  .nuestro-dia__sign { font-size: 36px; }
+  .nuestro-dia__body { font-size: 17px; }
+
+  /* The Day */
+  .the-day-section { padding: 80px 20px 100px; }
   .the-day__grid { grid-template-columns: repeat(2, 1fr); }
-  .date-card__date { font-size: 72px; }
-  .hero__names { font-size: 48px; }
+
+  /* FAQ */
+  .faq-section { padding: 60px 16px 80px; }
+  .faq-section__title { font-size: clamp(52px, 14vw, 84px); }
+  .faq-btn { padding: 18px 16px; gap: 12px; font-size: 17px; }
+  .faq-btn__left { gap: 12px; }
+  .faq-question-es { font-size: 16px; }
+  .faq-answer p { padding: 0 16px 14px 40px; font-size: 15px; }
+  .faq-answer p.faq-es { padding-bottom: 20px; }
+
+  /* Stay Tuned */
+  .stay-tuned__bg {
+    position: relative;
+    inset: unset;
+    width: 100%;
+    height: auto;
+    object-fit: initial;
+    z-index: 0;
+  }
+  .stay-tuned__content { padding: 60px 24px; }
+  .stay-tuned__border-line { left: 24px; right: 24px; }
+
+  /* Footer */
+  .footer { padding: 40px 24px 48px; gap: 20px; }
+  .footer__tumi { width: 28px; }
 }
