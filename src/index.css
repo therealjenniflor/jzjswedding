@@ -264,6 +264,54 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   display: block;
 }
 .date-card__keystone { display: none; }
+
+/* slideshow controls */
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(18, 10, 6, 0.45);
+  border: 1px solid rgba(245, 236, 220, 0.25);
+  color: #f5ecdc;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  padding: 0;
+}
+.slide-btn:hover { background: rgba(184, 85, 48, 0.6); }
+.slide-btn--prev { left: 12px; }
+.slide-btn--next { right: 12px; }
+.slide-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+.slide-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 236, 220, 0.6);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.slide-dot--active {
+  background: #e8761f;
+  border-color: #e8761f;
+}
 .date-card__calla {
   position: absolute;
   bottom: 60px;
