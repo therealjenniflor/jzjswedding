@@ -21,7 +21,7 @@ export default function App() {
       <Hero />
       <DateCard />
       <NuestroDia />
-      <TheDay />
+      {/* <TheDay /> */}
       <div className="picado-border" aria-hidden="true">
         <img src="images/tiles.png" alt="" />
       </div>
