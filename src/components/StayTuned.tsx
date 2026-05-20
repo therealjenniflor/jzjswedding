@@ -5,12 +5,22 @@ export default function StayTuned() {
       <div className="section-title section-title--light">
         <div className="section-title__row">
           <svg className="florete" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#b85530" strokeWidth="1.1">
-            <path d="M2 11 Q7 11 7 6 Q11 6 11 11 Q15 11 15 6 Q20 6 20 11"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(0 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(60 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(120 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(180 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(240 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(300 11 11)"/>
             <circle cx="11" cy="11" r="1.5" fill="#b85530"/>
           </svg>
           <h2>Stay Tuned</h2>
           <svg className="florete florete--flip" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#b85530" strokeWidth="1.1">
-            <path d="M2 11 Q7 11 7 6 Q11 6 11 11 Q15 11 15 6 Q20 6 20 11"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(0 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(60 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(120 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(180 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(240 11 11)"/>
+            <ellipse cx="11" cy="8" rx="1.5" ry="3.5" transform="rotate(300 11 11)"/>
             <circle cx="11" cy="11" r="1.5" fill="#b85530"/>
           </svg>
         </div>

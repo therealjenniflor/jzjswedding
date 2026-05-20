@@ -70,8 +70,8 @@ export default function CommonQuestions() {
     <section className="faq-section">
       <div className="faq-section__overlay" aria-hidden="true"></div>
       <div className="faq-section__inner">
-        <div className="faq-section__title">Common Questions</div>
-        <div className="faq-section__sub">Preguntas frecuentes</div>
+        <div className="faq-section__title">Good to Know</div>
+        <div className="faq-section__sub">Bueno Saber</div>
         <div className="faq-section__divider">
           <span className="faq-section__divider-line"></span>
           <span className="faq-section__divider-diamond"></span>
