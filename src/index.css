@@ -122,14 +122,15 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 .hero__amp {
   font-family: var(--ff-script);
-  font-size: clamp(52px, 8vw, 130px);
+  font-size: 90px;
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
   line-height: 1;
   display: inline;
-  vertical-align: baseline;
+  position: relative;
+  top: -0.045em;
 }
 .hero__subtitle {
   margin-top: clamp(8px, 1.2vw, 44px);
