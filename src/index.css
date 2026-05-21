@@ -453,6 +453,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   overflow-x: scroll;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
+  scroll-behavior: auto;
   scrollbar-width: none;
   display: flex;
   flex-direction: row;

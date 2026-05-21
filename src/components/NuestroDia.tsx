@@ -4,11 +4,26 @@ export default function NuestroDia() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [lang, setLang] = useState<'en' | 'es'>('en');
 
+  function smoothScroll(el: HTMLElement, targetLeft: number, duration = 560) {
+    const start = el.scrollLeft;
+    const distance = targetLeft - start;
+    const startTime = performance.now();
+    function easeInOutCubic(t: number) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+    function step(now: number) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      el.scrollLeft = start + distance * easeInOutCubic(progress);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
   function switchLang(to: 'en' | 'es') {
     const el = scrollRef.current;
     if (!el) return;
     setLang(to);
-    el.scrollTo({ left: to === 'es' ? el.clientWidth : 0, behavior: 'smooth' });
+    smoothScroll(el, to === 'es' ? el.clientWidth : 0);
   }
 
   const divider = (
