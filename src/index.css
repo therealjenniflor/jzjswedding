@@ -957,8 +957,10 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
     font-size: clamp(32px, 9vw, 52px);
     white-space: normal;
     line-height: 1.1;
+    margin-top: 32px;
   }
-  .hero__amp { font-size: clamp(36px, 10vw, 58px); }
+  .hero__amp { font-size: 45px; }
+  .hero__subtitle { font-size: 14px; }
   .hero__inner { padding: 64px 5% 0; }
 
   /* Date card */
