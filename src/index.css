@@ -954,6 +954,14 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
     height: 90vh;
   }
   .hero__bg { filter: brightness(1.5); }
+  .hero__overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,.52) 0%,
+      rgba(0,0,0,.25) 35%,
+      rgba(0,0,0,0) 60%
+    );
+  }
   .hero__names {
     font-size: clamp(32px, 9vw, 52px);
     white-space: normal;
