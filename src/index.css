@@ -415,13 +415,53 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   display: inline-block;
   height: auto;
 }
+.nuestro-dia__lang {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+.nuestro-dia__lang-btn {
+  background: none;
+  border: none;
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(245,236,220,0.35);
+  cursor: pointer;
+  padding: 4px 6px;
+  transition: color 0.2s;
+}
+.nuestro-dia__lang-btn--active {
+  color: #e8761f;
+}
+.nuestro-dia__lang-pip {
+  width: 3px;
+  height: 3px;
+  background: rgba(184,85,48,.4);
+  border-radius: 50%;
+  display: block;
+}
+.nuestro-dia__scroll-wrap {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  height: 494px;
+}
+.nuestro-dia__scroll-wrap::-webkit-scrollbar { display: none; }
 .nuestro-dia__content {
+  scroll-snap-align: start;
+  min-height: 494px;
   padding: 24px 56px 24px;
   position: relative;
   z-index: 1;
   text-align: center;
   max-width: 640px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 .nuestro-dia__title {
   font-family: var(--ff-script);

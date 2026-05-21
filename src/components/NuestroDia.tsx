@@ -1,4 +1,24 @@
+import { useRef, useState } from 'react';
+
 export default function NuestroDia() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [lang, setLang] = useState<'en' | 'es'>('en');
+
+  function switchLang(to: 'en' | 'es') {
+    const el = scrollRef.current;
+    if (!el) return;
+    setLang(to);
+    el.scrollTo({ top: to === 'es' ? el.scrollHeight / 2 : 0, behavior: 'smooth' });
+  }
+
+  const divider = (
+    <div className="nuestro-dia__divider">
+      <span style={{ width: '38px', height: '1px', background: '#e8761f', opacity: '.7', display: 'block' }}></span>
+      <span style={{ width: '6px', height: '6px', background: '#1f4f8e', transform: 'rotate(45deg)', display: 'block' }}></span>
+      <span style={{ width: '38px', height: '1px', background: '#e8761f', opacity: '.7', display: 'block' }}></span>
+    </div>
+  );
+
   return (
     <section className="nuestro-dia-section">
       <div className="nuestro-dia__card">
@@ -7,19 +27,44 @@ export default function NuestroDia() {
         <div className="nuestro-dia__picado-row" aria-hidden="true">
           <img src="images/papel-picado-5.png" alt="" />
         </div>
-        <div className="nuestro-dia__content">
-          <div className="nuestro-dia__title">Nuestro día especial</div>
-          <div className="nuestro-dia__eyebrow">Our special day</div>
-          <div className="nuestro-dia__divider">
-            <span style={{ width: '38px', height: '1px', background: '#e8761f', opacity: '.7', display: 'block' }}></span>
-            <span style={{ width: '6px', height: '6px', background: '#1f4f8e', transform: 'rotate(45deg)', display: 'block' }}></span>
-            <span style={{ width: '38px', height: '1px', background: '#e8761f', opacity: '.7', display: 'block' }}></span>
-          </div>
-          <p className="nuestro-dia__body">We are so excited to celebrate this special moment in our lives with our closest family and friends. Your love and support means the world to us, and we can't wait to share this unforgettable day with you.</p>
-          <p className="nuestro-dia__body">To welcome you home to our big day, we've created this website to keep you updated on all the details. Thank you for being a part of our journey — we can't wait to celebrate with you!</p>
-          <div className="nuestro-dia__with-love">With love,</div>
-          <div className="nuestro-dia__sign">Jennifer <span style={{ fontSize: '12px', verticalAlign: 'middle' }}>&amp;</span> Jhonatan</div>
+
+        {/* Language toggle */}
+        <div className="nuestro-dia__lang">
+          <button
+            className={`nuestro-dia__lang-btn${lang === 'en' ? ' nuestro-dia__lang-btn--active' : ''}`}
+            onClick={() => switchLang('en')}
+          >EN</button>
+          <span className="nuestro-dia__lang-pip"></span>
+          <button
+            className={`nuestro-dia__lang-btn${lang === 'es' ? ' nuestro-dia__lang-btn--active' : ''}`}
+            onClick={() => switchLang('es')}
+          >ES</button>
         </div>
+
+        <div className="nuestro-dia__scroll-wrap" ref={scrollRef}>
+          {/* English */}
+          <div className="nuestro-dia__content">
+            <div className="nuestro-dia__title">Nuestro día especial</div>
+            <div className="nuestro-dia__eyebrow">Our special day</div>
+            {divider}
+            <p className="nuestro-dia__body">We are so excited to celebrate this special moment in our lives with our closest family and friends. Your love and support means the world to us, and we can't wait to share this unforgettable day with you.</p>
+            <p className="nuestro-dia__body">To welcome you home to our big day, we've created this website to keep you updated on all the details. Thank you for being a part of our journey — we can't wait to celebrate with you!</p>
+            <div className="nuestro-dia__with-love">With love,</div>
+            <div className="nuestro-dia__sign">Jennifer <span style={{ fontSize: '12px', verticalAlign: 'middle' }}>&amp;</span> Jhonatan</div>
+          </div>
+
+          {/* Spanish */}
+          <div className="nuestro-dia__content">
+            <div className="nuestro-dia__title">Nuestro día especial</div>
+            <div className="nuestro-dia__eyebrow">Nuestro día especial</div>
+            {divider}
+            <p className="nuestro-dia__body">¡Estamos muy emocionados de celebrar este momento tan especial en nuestras vidas con nuestros familiares y amigos más cercanos! Su amor y apoyo significan el mundo para nosotros, y no podemos esperar para compartir este día inolvidable con ustedes.</p>
+            <p className="nuestro-dia__body">Para recibirlos en nuestro gran día, hemos creado este sitio web para mantenerlos al tanto de todos los detalles. ¡Gracias por ser parte de nuestro camino — no podemos esperar para celebrar con ustedes!</p>
+            <div className="nuestro-dia__with-love">Con amor,</div>
+            <div className="nuestro-dia__sign">Jennifer <span style={{ fontSize: '12px', verticalAlign: 'middle' }}>&amp;</span> Jhonatan</div>
+          </div>
+        </div>
+
         <div className="nuestro-dia__fringe" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 28" width="100%" preserveAspectRatio="none" style={{ display: 'block' }}>
             <line x1="6.7" y1="0" x2="6.7" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="20.0" y1="0" x2="20.0" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="33.3" y1="0" x2="33.3" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="46.7" y1="0" x2="46.7" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="60.0" y1="0" x2="60.0" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="73.3" y1="0" x2="73.3" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="86.7" y1="0" x2="86.7" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="100.0" y1="0" x2="100.0" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="113.3" y1="0" x2="113.3" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="126.7" y1="0" x2="126.7" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="140.0" y1="0" x2="140.0" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="153.3" y1="0" x2="153.3" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="166.7" y1="0" x2="166.7" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="180.0" y1="0" x2="180.0" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="193.3" y1="0" x2="193.3" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="206.7" y1="0" x2="206.7" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="220.0" y1="0" x2="220.0" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="233.3" y1="0" x2="233.3" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="246.7" y1="0" x2="246.7" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="260.0" y1="0" x2="260.0" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="273.3" y1="0" x2="273.3" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="286.7" y1="0" x2="286.7" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="300.0" y1="0" x2="300.0" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="313.3" y1="0" x2="313.3" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="326.7" y1="0" x2="326.7" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="340.0" y1="0" x2="340.0" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="353.3" y1="0" x2="353.3" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="366.7" y1="0" x2="366.7" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="380.0" y1="0" x2="380.0" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="393.3" y1="0" x2="393.3" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="406.7" y1="0" x2="406.7" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="420.0" y1="0" x2="420.0" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="433.3" y1="0" x2="433.3" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="446.7" y1="0" x2="446.7" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="460.0" y1="0" x2="460.0" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="473.3" y1="0" x2="473.3" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="486.7" y1="0" x2="486.7" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="500.0" y1="0" x2="500.0" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="513.3" y1="0" x2="513.3" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="526.7" y1="0" x2="526.7" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="540.0" y1="0" x2="540.0" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="553.3" y1="0" x2="553.3" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="566.7" y1="0" x2="566.7" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="580.0" y1="0" x2="580.0" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="593.3" y1="0" x2="593.3" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="606.7" y1="0" x2="606.7" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="620.0" y1="0" x2="620.0" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="633.3" y1="0" x2="633.3" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="646.7" y1="0" x2="646.7" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="660.0" y1="0" x2="660.0" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="673.3" y1="0" x2="673.3" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="686.7" y1="0" x2="686.7" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="700.0" y1="0" x2="700.0" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="713.3" y1="0" x2="713.3" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="726.7" y1="0" x2="726.7" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="740.0" y1="0" x2="740.0" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="753.3" y1="0" x2="753.3" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="766.7" y1="0" x2="766.7" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="780.0" y1="0" x2="780.0" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="793.3" y1="0" x2="793.3" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="806.7" y1="0" x2="806.7" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="820.0" y1="0" x2="820.0" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="833.3" y1="0" x2="833.3" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="846.7" y1="0" x2="846.7" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="860.0" y1="0" x2="860.0" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="873.3" y1="0" x2="873.3" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="886.7" y1="0" x2="886.7" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="900.0" y1="0" x2="900.0" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="913.3" y1="0" x2="913.3" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="926.7" y1="0" x2="926.7" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="940.0" y1="0" x2="940.0" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="953.3" y1="0" x2="953.3" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="966.7" y1="0" x2="966.7" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="980.0" y1="0" x2="980.0" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="993.3" y1="0" x2="993.3" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="1006.7" y1="0" x2="1006.7" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="1020.0" y1="0" x2="1020.0" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="1033.3" y1="0" x2="1033.3" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="1046.7" y1="0" x2="1046.7" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="1060.0" y1="0" x2="1060.0" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="1073.3" y1="0" x2="1073.3" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="1086.7" y1="0" x2="1086.7" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="1100.0" y1="0" x2="1100.0" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="1113.3" y1="0" x2="1113.3" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="1126.7" y1="0" x2="1126.7" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="1140.0" y1="0" x2="1140.0" y2="23" stroke="#e8761f" strokeWidth="1.5"/><line x1="1153.3" y1="0" x2="1153.3" y2="21" stroke="#e8761f" strokeWidth="1.5"/><line x1="1166.7" y1="0" x2="1166.7" y2="19" stroke="#e8761f" strokeWidth="1.5"/><line x1="1180.0" y1="0" x2="1180.0" y2="25" stroke="#e8761f" strokeWidth="1.5"/><line x1="1193.3" y1="0" x2="1193.3" y2="23" stroke="#e8761f" strokeWidth="1.5"/>
