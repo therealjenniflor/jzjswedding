@@ -3,8 +3,8 @@ import { useState } from 'react';
 const faqs = [
   {
     num: '01',
-    q: 'I received this link from someone other than Jennifer & Jhon. Am I invited?',
-    qes: 'Recibí este enlace de alguien que no es Jennifer ni Jhon. ¿Estoy invitado/a?',
+    q: 'I received this link from someone other than Jennifer & Jhonatan. Am I invited?',
+    qes: 'Recibí este enlace de alguien que no es Jennifer ni Jhonatan. ¿Estoy invitado/a?',
     a: "If this link didn't come directly from us, unfortunately you are not on our guest list. Our celebration is intimate and invite-only and we ask that you kindly respect that.\n\nIf you believe there's been a mix-up, please be patient with us as we're still in the process of distributing invites. We kindly ask that you refrain from reaching out directly in the meantime. We will make sure to update the site letting you know all invitations have been sent out.",
     aes: 'Si este enlace no vino directamente de nosotros, lamentablemente no estás en nuestra lista de invitados. Nuestra celebración es íntima y solo por invitación, y te pedimos que lo respetes.\n\nSi crees que hubo un malentendido, por favor ten paciencia, ya que aún estamos en proceso de distribuir las invitaciones. Te pedimos que por el momento te abstengas de contactarnos directamente. Nos aseguraremos de actualizar el sitio para informarte cuando todas las invitaciones hayan sido enviadas.'
   },
@@ -47,8 +47,15 @@ const faqs = [
     num: '07',
     q: "What's the dress code?",
     qes: '¿Cuál es el código de vestimenta?',
-    a: "Wear any color you'd like, or take inspiration from the wedding colors above. Please come looking your absolute best!",
-    aes: '¡Por favor ven luciendo lo mejor de ti! Usa el color que quieras, o inspírate en los colores de la boda arriba.'
+    a: "Wear any color you'd like, or take inspiration from our wedding colors below. Please come looking your absolute best!",
+    aes: '¡Por favor ven luciendo lo mejor de ti! Usa el color que quieras, o inspírate en los colores de nuestra boda a continuación.',
+    swatches: [
+      { hex: '#8a3a1f', name: 'Sienna' },
+      { hex: '#e8761f', name: 'Marigold' },
+      { hex: '#4a121b', name: 'Burgundy' },
+      { hex: '#1e0a2e', name: 'Deep Plum' },
+      { hex: '#061428', name: 'Cobalt' },
+    ],
   },
   {
     num: '08',
@@ -111,6 +118,16 @@ export default function CommonQuestions() {
                   style={{ maxHeight: isOpen ? '600px' : '0px' }}
                 >
                   {faq.a.split('\n\n').map((para, pi) => <p key={pi}>{para}</p>)}
+                  {'swatches' in faq && (
+                    <div className="faq-swatches">
+                      {(faq as typeof faq & { swatches: { hex: string; name: string }[] }).swatches.map(s => (
+                        <div className="faq-swatch" key={s.hex}>
+                          <span className="faq-swatch__dot" style={{ background: s.hex }} />
+                          <span className="faq-swatch__label">{s.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   {faq.aes.split('\n\n').map((para, pi) => <p key={pi} className="faq-es">{para}</p>)}
                 </div>
               </div>
