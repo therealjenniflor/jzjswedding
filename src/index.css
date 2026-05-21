@@ -817,7 +817,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 .stay-tuned__body {
   font-family: var(--ff-serif);
   font-style: italic;
-  font-size: clamp(18px, 1.6vw, 20px);
+  font-size: clamp(16px, 1.6vw, 20px);
   color: rgba(245,236,220,.75);
   max-width: 680px;
   margin: 52px auto 52px;
@@ -1006,6 +1006,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   .faq-answer p.faq-es { padding-bottom: 20px; }
 
   /* Stay Tuned */
+  .stay-tuned__body { font-size: 18px; }
   .stay-tuned__bg {
     position: relative;
     inset: unset;
