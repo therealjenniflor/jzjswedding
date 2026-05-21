@@ -8,7 +8,7 @@ export default function NuestroDia() {
     const el = scrollRef.current;
     if (!el) return;
     setLang(to);
-    el.scrollTo({ top: to === 'es' ? el.scrollHeight / 2 : 0, behavior: 'smooth' });
+    el.scrollTo({ left: to === 'es' ? el.clientWidth : 0, behavior: 'smooth' });
   }
 
   const divider = (
@@ -28,17 +28,11 @@ export default function NuestroDia() {
           <img src="images/papel-picado-5.png" alt="" />
         </div>
 
-        {/* Language toggle */}
+        {/* Language toggle — outside scroll, stays fixed */}
         <div className="nuestro-dia__lang">
-          <button
-            className={`nuestro-dia__lang-btn${lang === 'en' ? ' nuestro-dia__lang-btn--active' : ''}`}
-            onClick={() => switchLang('en')}
-          >EN</button>
+          <button className={`nuestro-dia__lang-btn${lang === 'en' ? ' nuestro-dia__lang-btn--active' : ''}`} onClick={() => switchLang('en')}>EN</button>
           <span className="nuestro-dia__lang-pip"></span>
-          <button
-            className={`nuestro-dia__lang-btn${lang === 'es' ? ' nuestro-dia__lang-btn--active' : ''}`}
-            onClick={() => switchLang('es')}
-          >ES</button>
+          <button className={`nuestro-dia__lang-btn${lang === 'es' ? ' nuestro-dia__lang-btn--active' : ''}`} onClick={() => switchLang('es')}>ES</button>
         </div>
 
         <div className="nuestro-dia__scroll-wrap" ref={scrollRef}>
@@ -49,8 +43,6 @@ export default function NuestroDia() {
             {divider}
             <p className="nuestro-dia__body">We are so excited to celebrate this special moment in our lives with our closest family and friends. Your love and support means the world to us, and we can't wait to share this unforgettable day with you.</p>
             <p className="nuestro-dia__body">To welcome you home to our big day, we've created this website to keep you updated on all the details. Thank you for being a part of our journey — we can't wait to celebrate with you!</p>
-            <div className="nuestro-dia__with-love">With love,</div>
-            <div className="nuestro-dia__sign">Jennifer <span style={{ fontSize: '12px', verticalAlign: 'middle' }}>&amp;</span> Jhonatan</div>
           </div>
 
           {/* Spanish */}
@@ -60,10 +52,12 @@ export default function NuestroDia() {
             {divider}
             <p className="nuestro-dia__body">¡Estamos muy emocionados de celebrar este momento tan especial en nuestras vidas con nuestros familiares y amigos más cercanos! Su amor y apoyo significan el mundo para nosotros, y no podemos esperar para compartir este día inolvidable con ustedes.</p>
             <p className="nuestro-dia__body">Para recibirlos en nuestro gran día, hemos creado este sitio web para mantenerlos al tanto de todos los detalles. ¡Gracias por ser parte de nuestro camino — no podemos esperar para celebrar con ustedes!</p>
-            <div className="nuestro-dia__with-love">Con amor,</div>
-            <div className="nuestro-dia__sign">Jennifer <span style={{ fontSize: '12px', verticalAlign: 'middle' }}>&amp;</span> Jhonatan</div>
           </div>
         </div>
+
+        {/* Signature — outside scroll, stays fixed */}
+        <div className="nuestro-dia__with-love">{lang === 'es' ? 'Con amor,' : 'With love,'}</div>
+        <div className="nuestro-dia__sign">Jennifer <span style={{ fontSize: '12px', verticalAlign: 'middle' }}>&amp;</span> Jhonatan</div>
 
         <div className="nuestro-dia__fringe" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 28" width="100%" preserveAspectRatio="none" style={{ display: 'block' }}>

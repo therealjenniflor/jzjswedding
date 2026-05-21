@@ -416,51 +416,56 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   height: auto;
 }
 .nuestro-dia__lang {
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding-bottom: 4px;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+  padding: 8px 0 4px;
 }
 .nuestro-dia__lang-btn {
   background: none;
   border: none;
   font-family: var(--ff-mono);
-  font-size: 10px;
-  letter-spacing: 0.25em;
-  color: rgba(245,236,220,0.35);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: rgba(245,236,220,0.4);
   cursor: pointer;
-  padding: 4px 6px;
+  padding: 4px 8px;
   transition: color 0.2s;
+  text-transform: uppercase;
 }
 .nuestro-dia__lang-btn--active {
   color: #e8761f;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(232,118,31,0.5);
 }
 .nuestro-dia__lang-pip {
-  width: 3px;
-  height: 3px;
-  background: rgba(184,85,48,.4);
+  width: 4px;
+  height: 4px;
+  background: rgba(184,85,48,.5);
   border-radius: 50%;
   display: block;
 }
 .nuestro-dia__scroll-wrap {
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  height: 494px;
+  display: flex;
+  flex-direction: row;
 }
 .nuestro-dia__scroll-wrap::-webkit-scrollbar { display: none; }
 .nuestro-dia__content {
   scroll-snap-align: start;
-  min-height: 494px;
+  flex: 0 0 100%;
+  min-width: 0;
   padding: 24px 56px 24px;
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
   box-sizing: border-box;
 }
 .nuestro-dia__title {
@@ -499,6 +504,9 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   font-size: 15px;
   color: rgba(245,236,220,.8);
   margin-top: 18px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 .nuestro-dia__sign {
   font-family: var(--ff-script);
@@ -506,6 +514,10 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   color: #e8761f;
   line-height: 1;
   margin-top: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 .nuestro-dia__fringe {
   line-height: 0;
@@ -935,13 +947,18 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 
 @media (max-width: 560px) {
   /* Hero */
+  .hero {
+    aspect-ratio: unset;
+    min-height: unset;
+    height: 90vh;
+  }
   .hero__names {
     font-size: clamp(32px, 9vw, 52px);
     white-space: normal;
     line-height: 1.1;
   }
   .hero__amp { font-size: clamp(36px, 10vw, 58px); }
-  .hero__inner { padding: 7% 5% 0; }
+  .hero__inner { padding: 64px 5% 0; }
 
   /* Date card */
   .date-card-section { padding: 60px 16px; }
