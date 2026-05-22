@@ -57,7 +57,7 @@ export default function NuestroDia() {
             <div className="nuestro-dia__eyebrow">Nuestro día especial</div>
             {divider}
             <p className="nuestro-dia__body">We are so excited to celebrate this special moment in our lives with our closest family and friends. Your love and support means the world to us, and we can't wait to share this unforgettable day with you.</p>
-            <p className="nuestro-dia__body">To welcome you home to our big day, we've created this website to keep you updated on all the details. Thank you for being a part of our journey — we can't wait to celebrate with you!</p>
+            <p className="nuestro-dia__body">To welcome you to our big day, we've created this website to keep you updated on all the details. Thank you for being a part of our journey — we can't wait to celebrate with you!</p>
           </div>
 
           {/* Spanish */}
