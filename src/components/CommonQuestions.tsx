@@ -50,11 +50,12 @@ const faqs = [
     a: "Wear any color you'd like, or take inspiration from our wedding colors below. Please come looking your absolute best!",
     aes: '¡Por favor ven luciendo lo mejor de ti! Usa el color que quieras, o inspírate en los colores de nuestra boda a continuación.',
     swatches: [
-      { hex: '#8a3a1f', name: 'Sienna' },
+      { hex: '#111111', name: 'Black' },
       { hex: '#e8761f', name: 'Marigold' },
-      { hex: '#4a121b', name: 'Burgundy' },
+      { hex: '#3b1f0f', name: 'Dark Brown' },
       { hex: '#1e0a2e', name: 'Deep Plum' },
       { hex: '#061428', name: 'Cobalt' },
+      { hex: '#6d1a3e', name: 'Dark Magenta' },
     ],
   },
   {
