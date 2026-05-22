@@ -3,17 +3,17 @@ import { useState } from 'react';
 const faqs = [
   {
     num: '01',
-    q: 'I received this link from someone other than Jennifer & Jhonatan. Am I invited?',
-    qes: 'Recibí este enlace de alguien que no es Jennifer ni Jhonatan. ¿Estoy invitado/a?',
-    a: "If this link didn't come directly from us, unfortunately you are not on our guest list. Our celebration is intimate and invite-only and we ask that you kindly respect that.\n\nIf you believe there's been a mix-up, please be patient with us as we're still in the process of distributing invites. We kindly ask that you refrain from reaching out directly in the meantime. We will make sure to update the site letting you know all invitations have been sent out.",
-    aes: 'Si este enlace no vino directamente de nosotros, lamentablemente no estás en nuestra lista de invitados. Nuestra celebración es íntima y solo por invitación, y te pedimos que lo respetes.\n\nSi crees que hubo un malentendido, por favor ten paciencia, ya que aún estamos en proceso de distribuir las invitaciones. Te pedimos que por el momento te abstengas de contactarnos directamente. Nos aseguraremos de actualizar el sitio para informarte cuando todas las invitaciones hayan sido enviadas.'
-  },
-  {
-    num: '02',
     q: 'When can I RSVP, and when is it due?',
     qes: '¿Cuándo puedo confirmar mi asistencia?',
     a: 'Expect to receive an official RSVP request within a month or two of receiving this link. We will be sending it via text and email, so we will reach out to collect your email address closer to that time. Stay tuned!',
     aes: 'Espera recibir una solicitud oficial de confirmación de asistencia dentro de uno o dos meses de haber recibido este enlace. La enviaremos por correo electrónico, así que nos pondremos en contacto para pedirte tu dirección de correo más cerca de esa fecha. ¡Pendientes!'
+  },
+  {
+    num: '02',
+    q: 'I received this link from someone other than Jennifer & Jhonatan. Am I invited?',
+    qes: 'Recibí este enlace de alguien que no es Jennifer ni Jhonatan. ¿Estoy invitado/a?',
+    a: "If this link didn't come directly from us, unfortunately you are not on our guest list. Our celebration is intimate and invite-only and we ask that you kindly respect that.\n\nIf you believe there's been a mix-up, please be patient with us as we're still in the process of distributing invites. We kindly ask that you refrain from reaching out directly in the meantime. We will make sure to update the site letting you know all invitations have been sent out.",
+    aes: 'Si este enlace no vino directamente de nosotros, lamentablemente no estás en nuestra lista de invitados. Nuestra celebración es íntima y solo por invitación, y te pedimos que lo respetes.\n\nSi crees que hubo un malentendido, por favor ten paciencia, ya que aún estamos en proceso de distribuir las invitaciones. Te pedimos que por el momento te abstengas de contactarnos directamente. Nos aseguraremos de actualizar el sitio para informarte cuando todas las invitaciones hayan sido enviadas.'
   },
   {
     num: '03',
