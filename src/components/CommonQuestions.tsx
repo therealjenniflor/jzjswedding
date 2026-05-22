@@ -26,8 +26,8 @@ const faqs = [
     num: '04',
     q: 'Can I bring a plus-one?',
     qes: '¿Puedo traer un acompañante?',
-    a: 'Your invite will have the names of all invitees. If your invite includes a plus-one, then yes! Otherwise, we ask that you come solo.',
-    aes: 'Tu invitación tendrá los nombres de todos los invitados. Si tu invitación incluye un acompañante, ¡entonces sí! De lo contrario, te pedimos que vengas solo/a.'
+    a: 'When we shared this link with you, we were intentional about who was included. When you receive your RSVP, it will explicitly list the names of everyone invited in your party.',
+    aes: 'Al compartir este enlace contigo, fuimos intencionales sobre quién fue incluido. Cuando recibas tu RSVP, indicará explícitamente los nombres de todos los invitados en tu grupo.'
   },
   {
     num: '05',
