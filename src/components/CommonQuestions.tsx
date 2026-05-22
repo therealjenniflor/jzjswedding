@@ -12,8 +12,8 @@ const faqs = [
     num: '02',
     q: 'When can I RSVP, and when is it due?',
     qes: '¿Cuándo puedo confirmar mi asistencia?',
-    a: 'We are working on the RSVP and will reach out to each person individually with their specific invitation details. Stay tuned!',
-    aes: 'Estamos trabajando en el RSVP y nos pondremos en contacto con cada persona individualmente con los detalles de su invitación. ¡Pendientes!'
+    a: 'Expect to receive an official RSVP request within a month or two of receiving this link. We will be sending it via text and email, so we will reach out to collect your email address closer to that time. Stay tuned!',
+    aes: 'Espera recibir una solicitud oficial de confirmación de asistencia dentro de uno o dos meses de haber recibido este enlace. La enviaremos por correo electrónico, así que nos pondremos en contacto para pedirte tu dirección de correo más cerca de esa fecha. ¡Pendientes!'
   },
   {
     num: '03',
