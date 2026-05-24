@@ -556,6 +556,40 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   color: rgba(245,236,220,.5);
 }
 
+.faq-avoid {
+  padding: 0 28px 12px 75px;
+}
+.faq-avoid__note {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: rgba(245,236,220,.45);
+  font-style: italic;
+  margin: 0 0 4px;
+  line-height: 1.6;
+}
+.faq-swatches--avoid {
+  padding-top: 0;
+  padding-bottom: 8px;
+}
+.faq-swatch__dot--avoid {
+  position: relative;
+  opacity: 0.75;
+}
+.faq-swatch__dot--avoid::after {
+  content: '✕';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: rgba(245,236,220,.85);
+  line-height: 36px;
+  text-align: center;
+  width: 100%;
+}
+
 .special-day-section { display: none; }
 
 /* ─── The Day ────────────────────────────────────────────── */
