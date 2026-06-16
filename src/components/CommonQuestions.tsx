@@ -55,7 +55,8 @@ const faqs = [
     q: "What's the dress code?",
     qes: '¿Cuál es el código de vestimenta?',
     a: "Our theme is dark, neutral tones. Wear any color you'd like, or take inspiration from the 4 colors below. Please come looking your absolute best!",
-    aes: '¡Nuestro tema son los tonos oscuros y neutros! Usa el color que quieras, o inspírate en los colores de nuestra boda a continuación. ¡Por favor ven luciendo lo mejor de ti!',
+    aesIntro: '¡Nuestro tema son los tonos oscuros y neutros! Usa el color que quieras, o inspírate en los 4 colores a continuación. ¡Por favor ven luciendo lo mejor de ti!',
+    aes: '',
     swatches: [
       { hex: '#111111', name: 'Black' },
       { hex: '#0E1E07', name: 'Forest Green' },
@@ -126,9 +127,10 @@ export default function CommonQuestions() {
                 </button>
                 <div
                   className="faq-answer"
-                  style={{ maxHeight: isOpen ? '600px' : '0px' }}
+                  style={{ maxHeight: isOpen ? '1400px' : '0px' }}
                 >
                   {faq.a.split('\n\n').map((para, pi) => <p key={pi}>{para}</p>)}
+                  {'aesIntro' in faq && <p className="faq-es">{(faq as typeof faq & { aesIntro: string }).aesIntro}</p>}
                   {'swatches' in faq && (
                     <div className="faq-swatches">
                       {(faq as typeof faq & { swatches: { hex: string; name: string }[] }).swatches.map(s => (
