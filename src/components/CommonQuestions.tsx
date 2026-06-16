@@ -54,7 +54,7 @@ const faqs = [
     num: '08',
     q: "What's the dress code?",
     qes: '¿Cuál es el código de vestimenta?',
-    a: "Our theme is dark, neutral tones. Wear any color you'd like, or take inspiration from our wedding colors below. Please come looking your absolute best!",
+    a: "Our theme is dark, neutral tones. Wear any color you'd like, or take inspiration from the 4 colors below. Please come looking your absolute best!",
     aes: '¡Nuestro tema son los tonos oscuros y neutros! Usa el color que quieras, o inspírate en los colores de nuestra boda a continuación. ¡Por favor ven luciendo lo mejor de ti!',
     swatches: [
       { hex: '#111111', name: 'Black' },
@@ -65,6 +65,7 @@ const faqs = [
     avoidSwatches: [
       { hex: '#061428', name: 'Navy' },
       { hex: '#6B2900', name: 'Burnt Sienna' },
+      { hex: '#ffffff', name: 'Any Shade or Tone of White', darkX: true },
     ],
   },
   {
@@ -140,12 +141,12 @@ export default function CommonQuestions() {
                   )}
                   {'avoidSwatches' in faq && (
                     <div className="faq-avoid">
-                      <p className="faq-avoid__note">We kindly ask that you avoid these colors, as they're a little too close to our wedding palette. We appreciate it so much!</p>
+                      <p className="faq-avoid__note">Below are the colors we ask to avoid, as they're a little too close to our bridal party. We appreciate it so much!</p>
                       <p className="faq-avoid__note faq-es">Les pedimos amablemente que eviten estos colores, ya que se parecen un poco demasiado a nuestra paleta de boda. ¡Se los agradecemos mucho!</p>
                       <div className="faq-swatches faq-swatches--avoid">
-                        {(faq as typeof faq & { avoidSwatches: { hex: string; name: string }[] }).avoidSwatches.map(s => (
+                        {(faq as typeof faq & { avoidSwatches: { hex: string; name: string; darkX?: boolean }[] }).avoidSwatches.map(s => (
                           <div className="faq-swatch" key={s.hex}>
-                            <span className="faq-swatch__dot faq-swatch__dot--avoid" style={{ background: s.hex }} />
+                            <span className={`faq-swatch__dot faq-swatch__dot--avoid${s.darkX ? ' faq-swatch__dot--dark-x' : ''}`} style={{ background: s.hex }} />
                             <span className="faq-swatch__label">{s.name}</span>
                           </div>
                         ))}

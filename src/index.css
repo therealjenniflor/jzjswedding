@@ -589,6 +589,9 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   text-align: center;
   width: 100%;
 }
+.faq-swatch__dot--dark-x::after {
+  color: #000000;
+}
 
 .special-day-section { display: none; }
 
@@ -1038,6 +1041,8 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   .faq-question-es { font-size: 16px; }
   .faq-answer p { padding: 0 16px 14px 40px; font-size: 15px; }
   .faq-answer p.faq-es { padding-bottom: 20px; }
+  .faq-swatches { padding: 8px 16px 20px 40px; gap: 12px; }
+  .faq-avoid { padding: 0 16px 12px 40px; }
 
   /* Stay Tuned */
   .stay-tuned__body { font-size: 18px; }
