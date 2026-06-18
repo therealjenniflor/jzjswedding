@@ -89,6 +89,8 @@ export default function RSVPPage() {
   const [plusOneAttending, setPlusOneAttending] = useState<boolean | null>(null);
   const [plusOneDietary, setPlusOneDietary] = useState('');
   const [plusOneName, setPlusOneName] = useState('');
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
+  const [inviteConfirmed, setInviteConfirmed] = useState(false);
 
   useEffect(() => {
     if (!token) { setPhase('not-found'); return; }
@@ -293,13 +295,53 @@ export default function RSVPPage() {
               )}
 
               {attending !== null && (
-                <button
-                  type="submit"
-                  className="rsvp-submit"
-                  disabled={phase === 'submitting' || (attending && guest.plusOne !== null && plusOneAttending === null)}
-                >
-                  {phase === 'submitting' ? 'Sending…' : 'Send my RSVP'}
-                </button>
+                <>
+                  {attending === true && (
+                    <>
+                      <label className="rsvp-age-check">
+                        <input
+                          type="checkbox"
+                          checked={ageConfirmed}
+                          onChange={e => setAgeConfirmed(e.target.checked)}
+                        />
+                        <span className="rsvp-age-check__box" />
+                        <span className="rsvp-age-check__text">
+                          I understand that everyone in this invite is 18+
+                        </span>
+                      </label>
+                      <p className="rsvp-age-note">
+                        Guests under 18 will be kindly asked to leave the venue.
+                      </p>
+
+                      {guest.plusOne && (
+                        <label className="rsvp-age-check" style={{ marginTop: 16 }}>
+                          <input
+                            type="checkbox"
+                            checked={inviteConfirmed}
+                            onChange={e => setInviteConfirmed(e.target.checked)}
+                          />
+                          <span className="rsvp-age-check__box" />
+                          <span className="rsvp-age-check__text">
+                            Only those named in this invitation will be joining
+                          </span>
+                        </label>
+                      )}
+                    </>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="rsvp-submit"
+                    disabled={
+                      phase === 'submitting' ||
+                      (attending === true && !ageConfirmed) ||
+                      (attending === true && guest.plusOne !== null && !inviteConfirmed) ||
+                      (attending && guest.plusOne !== null && plusOneAttending === null)
+                    }
+                  >
+                    {phase === 'submitting' ? 'Sending…' : 'Send my RSVP'}
+                  </button>
+                </>
               )}
             </form>
           )}
