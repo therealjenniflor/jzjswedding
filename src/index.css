@@ -345,15 +345,13 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   white-space: nowrap;
 }
 .date-card__date sup {
-  font-family: var(--ff-serif);
-  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
   font-size: .45em;
   vertical-align: .5em;
   margin-left: 2px;
 }
 .date-card__at {
-  font-family: var(--ff-serif);
-  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
   font-size: 32px;
   color: rgba(245,236,220,.65);
   margin: 28px 0;
@@ -492,16 +490,15 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   margin: 12px 0 20px;
 }
 .nuestro-dia__body {
-  font-family: var(--ff-serif);
-  font-style: italic;
-  font-size: 20px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 200;
+  font-size: 18px;
   line-height: 1.6;
   color: rgba(245,236,220,.94);
   margin: 0 0 12px;
 }
 .nuestro-dia__with-love {
-  font-family: var(--ff-serif);
-  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
   font-size: 15px;
   color: rgba(245,236,220,.8);
   margin-top: 18px;
@@ -560,11 +557,10 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   padding: 0 28px 12px 75px;
 }
 .faq-avoid__note {
-  font-family: var(--ff-mono);
+  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
   font-size: 11px;
   letter-spacing: .06em;
   color: rgba(245,236,220,.45);
-  font-style: italic;
   margin: 0 0 4px;
   line-height: 1.6;
 }
@@ -781,17 +777,17 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   color: #f5ecdc;
   font-family: var(--ff-serif);
   font-size: 20px;
-  font-style: italic;
+  font-style: normal;
 }
 .faq-btn__left { display: flex; align-items: center; gap: 18px; }
 .faq-diamond { width: 7px; height: 7px; background: #e8761f; transform: rotate(45deg); flex-shrink: 0; opacity: .55; transition: opacity .2s; }
 .faq-num { font-family: var(--ff-mono); font-size: 10px; letter-spacing: .4em; text-transform: uppercase; color: rgba(245,236,220,.6); width: 22px; transition: color .2s; }
 .faq-icon { font-family: var(--ff-mono); font-size: 22px; color: #e8761f; transition: transform 200ms ease; line-height: 1; }
 .faq-question-wrap { display: flex; flex-direction: column; gap: 2px; }
-.faq-question-es { font-family: var(--ff-serif); font-style: italic; font-size: 20px; color: #e8761f; opacity: .65; line-height: 1.2; }
+.faq-question-es { font-family: 'Source Sans 3', sans-serif; font-weight: 200; font-size: 20px; color: #e8761f; opacity: .65; line-height: 1.2; }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 260ms ease; }
 .faq-answer p { margin: 0; padding: 0 28px 16px 75px; font-family: var(--ff-serif); font-size: 16px; line-height: 1.7; color: #f5ecdc; opacity: .86; }
-.faq-answer p.faq-es { padding-top: 0; padding-bottom: 28px; font-size: 16px; font-style: italic; color: #e8761f; opacity: .75; }
+.faq-answer p.faq-es { padding-top: 0; padding-bottom: 28px; font-size: 16px; font-family: 'Source Sans 3', sans-serif; font-weight: 200; color: #e8761f; opacity: .75; }
 
 /* ─── Stay Tuned ─────────────────────────────────────────── */
 .stay-tuned-section {
@@ -852,8 +848,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   line-height: 1.1;
 }
 .stay-tuned__body {
-  font-family: var(--ff-serif);
-  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
   font-size: clamp(16px, 1.6vw, 20px);
   color: rgba(245,236,220,.75);
   max-width: 680px;
@@ -898,8 +893,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   margin-bottom: 16px;
 }
 .footer p {
-  font-family: var(--ff-serif);
-  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
   font-size: 14px;
   line-height: 1.55;
   max-width: 460px;
@@ -1017,7 +1011,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   color: #e8761f;
 }
 .rsvp-form__lead {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
   font-size: 16px;
   color: rgba(245,236,220,.55);
   margin-bottom: 36px;
@@ -1033,7 +1027,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 .rsvp-field-label {
   display: block;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
   font-size: 12px;
   letter-spacing: 0.1rem;
   color: #f5ecdc;
