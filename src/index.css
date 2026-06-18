@@ -956,11 +956,11 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   margin-bottom: 10px;
 }
 .rsvp-title {
-  font-family: var(--ff-serif);
-  font-weight: 500;
-  font-size: 48px;
-  letter-spacing: .32em;
-  text-transform: uppercase;
+  font-family: var(--ff-script);
+  font-weight: 400;
+  font-size: 72px;
+  letter-spacing: 0;
+  text-transform: none;
   color: #f5ecdc;
   margin: 0;
   display: flex;
@@ -969,11 +969,20 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   gap: 16px;
 }
 .rsvp-subtitle {
-  font-family: var(--ff-serif);
-  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 200;
   font-size: 19px;
   color: rgba(245,236,220,.55);
-  margin-top: 14px;
+  margin-top: 0;
+}
+.rsvp-wedding-date {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,236,220,.65);
+  margin-top: 10px;
 }
 .rsvp-divider {
   display: flex;

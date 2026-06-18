@@ -152,10 +152,11 @@ export default function RSVPPage() {
           <div className="rsvp-eyebrow">Jhonatan &amp; Jennifer</div>
           <h1 className="rsvp-title">
             <Florete color="#b85530" />
-            RSVP
+            R.S.V.P
             <Florete color="#b85530" />
           </h1>
-          <p className="rsvp-subtitle">Friday · October 30th, 2026</p>
+          <p className="rsvp-subtitle">Due by October 9th, 2026</p>
+          <p className="rsvp-wedding-date">Wedding · Friday, October 30th, 2026</p>
         </header>
 
         <div
