@@ -32,7 +32,7 @@ function Florete({ color = '#b85530' }: { color?: string }) {
 
 
 function fireWeddingConfetti() {
-  const colors = ['#e8761f', '#f5ecdc', '#b85530', '#ffd080', '#c95e10'];
+  const colors = ['#ffffff', '#c2185b', '#f48fb1', '#ffffff', '#ad1457'];
   confetti({
     particleCount: 80,
     spread: 70,
@@ -132,7 +132,7 @@ export default function RSVPPage() {
       if (!res.ok) throw new Error('server error');
       setPhase('success');
       setTimeout(() => {
-        const colors = ['#e8761f', '#f5ecdc', '#b85530', '#ffd080', '#c95e10', '#ffffff'];
+        const colors = ['#ffffff', '#c2185b', '#f48fb1', '#ffffff', '#ad1457', '#ffffff'];
         confetti({ particleCount: 120, spread: 90, origin: { y: 0.7 }, colors, scalar: 1.2 });
         setTimeout(() => confetti({ particleCount: 60, spread: 70, origin: { x: 0.2, y: 0.65 }, colors, angle: 55 }), 200);
         setTimeout(() => confetti({ particleCount: 60, spread: 70, origin: { x: 0.8, y: 0.65 }, colors, angle: 125 }), 200);
@@ -298,6 +298,11 @@ export default function RSVPPage() {
                 <>
                   {attending === true && (
                     <>
+                      <div className="rsvp-section-divider">
+                        <span className="rsvp-section-divider__line" />
+                        <span className="rsvp-section-divider__label">Before you go</span>
+                        <span className="rsvp-section-divider__line" />
+                      </div>
                       <label className="rsvp-age-check">
                         <input
                           type="checkbox"

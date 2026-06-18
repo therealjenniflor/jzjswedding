@@ -930,7 +930,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 .rsvp-page__inner {
   width: 100%;
-  max-width: 560px;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -997,12 +997,12 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   width: 100%;
   background: #120a06;
   border: 1px solid rgba(232,118,31,.22);
-  padding: 48px 40px;
+  padding: 48px 52px;
   box-shadow: 0 20px 60px rgba(0,0,0,.55);
 }
 .rsvp-form__greeting {
   font-family: var(--ff-serif);
-  font-size: 32px;
+  font-size: 40px;
   color: rgba(245,236,220,.7);
   margin-bottom: 6px;
 }
@@ -1028,7 +1028,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 .rsvp-field-label {
   display: block;
   font-family: 'Source Sans 3', sans-serif; font-weight: 200;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.1rem;
   color: #f5ecdc;
   margin-bottom: 12px;
@@ -1171,8 +1171,8 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   line-height: 1.6;
 }
 .rsvp-age-note {
-  font-family: var(--ff-serif);
-  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 200;
   font-size: 13px;
   color: rgba(245,236,220,.45);
   margin-top: 8px;
@@ -1365,7 +1365,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   display: flex;
   align-items: center;
   gap: 14px;
-  margin: 28px 0 24px;
+  margin: 40px 0 40px;
 }
 .rsvp-section-divider__line {
   flex: 1;
@@ -1375,7 +1375,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 .rsvp-section-divider__label {
   font-family: var(--ff-mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: .4em;
   text-transform: uppercase;
   color: #e8761f;
