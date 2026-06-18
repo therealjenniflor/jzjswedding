@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { otomiUrl, otomiStripUrl, P } from './utils/otomi';
 import Hero from './components/Hero';
 import DateCard from './components/DateCard';
 import NuestroDia from './components/NuestroDia';
-import TheDay from './components/TheDay';
 import CommonQuestions from './components/CommonQuestions';
 import StayTuned from './components/StayTuned';
 import Footer from './components/Footer';
+import RSVPPage from './pages/RSVPPage';
 
-export default function App() {
+function HomePage() {
   useEffect(() => {
     const root = document.documentElement;
     root.style.setProperty('--otomi-url-cream', otomiUrl());
@@ -21,7 +22,6 @@ export default function App() {
       <Hero />
       <DateCard />
       <NuestroDia />
-      {/* <TheDay /> */}
       <div className="picado-border" aria-hidden="true">
         <img src="images/tiles.png" alt="" />
       </div>
@@ -29,5 +29,14 @@ export default function App() {
       <StayTuned />
       <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/rsvp" element={<RSVPPage />} />
+    </Routes>
   );
 }
