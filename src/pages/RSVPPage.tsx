@@ -1,5 +1,6 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import confetti from 'canvas-confetti';
 
 type Phase = 'loading' | 'not-found' | 'form' | 'already-rsvpd' | 'submitting' | 'success' | 'error';
 
@@ -29,33 +30,39 @@ function Florete({ color = '#b85530' }: { color?: string }) {
   );
 }
 
-function Divider() {
-  return (
-    <div className="rsvp-divider">
-      <span className="rsvp-divider__line" />
-      <span className="rsvp-divider__diamond" />
-      <span className="rsvp-divider__line" />
-    </div>
-  );
+
+function fireWeddingConfetti() {
+  const colors = ['#e8761f', '#f5ecdc', '#b85530', '#ffd080', '#c95e10'];
+  confetti({
+    particleCount: 80,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors,
+    scalar: 1.1,
+  });
+  setTimeout(() => confetti({ particleCount: 40, spread: 50, origin: { x: 0.2, y: 0.55 }, colors, angle: 60 }), 150);
+  setTimeout(() => confetti({ particleCount: 40, spread: 50, origin: { x: 0.8, y: 0.55 }, colors, angle: 120 }), 150);
 }
 
 function RadioPair({
   name,
   value,
   onChange,
+  onYes,
   yesLabel = 'Joyfully accepts',
   noLabel = 'Regretfully declines',
 }: {
   name: string;
   value: boolean | null;
   onChange: (v: boolean) => void;
+  onYes?: () => void;
   yesLabel?: string;
   noLabel?: string;
 }) {
   return (
     <div className="rsvp-radio-group">
       <label className={`rsvp-radio${value === true ? ' rsvp-radio--selected' : ''}`}>
-        <input type="radio" name={name} checked={value === true} onChange={() => onChange(true)} />
+        <input type="radio" name={name} checked={value === true} onChange={() => { onChange(true); if (value !== true) onYes?.(); }} />
         <span className="rsvp-radio__mark" />
         <span className="rsvp-radio__label">{yesLabel}</span>
       </label>
@@ -74,12 +81,14 @@ export default function RSVPPage() {
 
   const [phase, setPhase] = useState<Phase>('loading');
   const [guest, setGuest] = useState<Guest | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const [attending, setAttending]           = useState<boolean | null>(null);
   const [dietary, setDietary]               = useState('');
   const [song, setSong]                     = useState('');
   const [plusOneAttending, setPlusOneAttending] = useState<boolean | null>(null);
   const [plusOneDietary, setPlusOneDietary] = useState('');
+  const [plusOneName, setPlusOneName] = useState('');
 
   useEffect(() => {
     if (!token) { setPhase('not-found'); return; }
@@ -115,10 +124,18 @@ export default function RSVPPage() {
           plusOneId: guest?.plusOne?.id ?? null,
           plusOneAttending: guest?.plusOne ? plusOneAttending : null,
           plusOneDietary,
+          plusOneName: guest?.plusOne?.name.toLowerCase().includes('plus 1') ? plusOneName : undefined,
         }),
       });
       if (!res.ok) throw new Error('server error');
       setPhase('success');
+      setTimeout(() => {
+        const colors = ['#e8761f', '#f5ecdc', '#b85530', '#ffd080', '#c95e10', '#ffffff'];
+        confetti({ particleCount: 120, spread: 90, origin: { y: 0.7 }, colors, scalar: 1.2 });
+        setTimeout(() => confetti({ particleCount: 60, spread: 70, origin: { x: 0.2, y: 0.65 }, colors, angle: 55 }), 200);
+        setTimeout(() => confetti({ particleCount: 60, spread: 70, origin: { x: 0.8, y: 0.65 }, colors, angle: 125 }), 200);
+        setTimeout(() => confetti({ particleCount: 80, spread: 100, origin: { y: 0.6 }, colors, scalar: 1.4 }), 500);
+      }, 400);
     } catch {
       setPhase('error');
     }
@@ -130,17 +147,24 @@ export default function RSVPPage() {
     <div className="rsvp-page">
       <div className="rsvp-page__inner">
         <header className="rsvp-header">
-          <div className="rsvp-header__floretes">
-            <Florete />
-            <Florete />
-          </div>
           <div className="rsvp-eyebrow">Jhonatan &amp; Jennifer</div>
-          <h1 className="rsvp-title">RSVP</h1>
-          <Divider />
-          <p className="rsvp-subtitle">Saturday · October 4th, 2025</p>
+          <h1 className="rsvp-title">
+            <Florete color="#b85530" />
+            RSVP
+            <Florete color="#b85530" />
+          </h1>
+          <p className="rsvp-subtitle">Friday · October 30th, 2026</p>
         </header>
 
-        <div className="rsvp-card">
+        <div
+          className={`rsvp-pinata${phase === 'success' ? ' rsvp-pinata--burst' : ''}`}
+          onAnimationEnd={e => { if (e.animationName === 'pinata-burst') e.currentTarget.classList.remove('rsvp-pinata--burst'); }}
+        >
+          <div className="rsvp-pinata__string" />
+          <img src="/images/pinata.png" alt="Wedding piñata" />
+        </div>
+
+        <div className="rsvp-card" ref={cardRef}>
 
           {phase === 'loading' && (
             <div className="rsvp-state rsvp-state--loading">
@@ -185,11 +209,19 @@ export default function RSVPPage() {
               {/* Primary guest attendance */}
               <fieldset className="rsvp-fieldset">
                 <legend className="rsvp-field-label">Will you be attending?</legend>
-                <RadioPair name="attending" value={attending} onChange={setAttending} />
+                <RadioPair
+                  name="attending"
+                  value={attending}
+                  onChange={v => {
+                    setAttending(v);
+                    setTimeout(() => cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+                  }}
+                  onYes={fireWeddingConfetti}
+                />
               </fieldset>
 
               {attending === true && (
-                <>
+                <div className="rsvp-reveal">
                   <div className="rsvp-field">
                     <label className="rsvp-field-label" htmlFor="dietary">
                       Any dietary restrictions or allergies?
@@ -215,7 +247,7 @@ export default function RSVPPage() {
 
                       <fieldset className="rsvp-fieldset">
                         <legend className="rsvp-field-label">
-                          Will {guest.plusOne.name.toLowerCase().includes('plus 1') ? 'your plus one' : guest.plusOne.name} be joining you?
+                          Will {guest.plusOne.name.toLowerCase().includes('plus 1') ? (plusOneName.trim() || 'your plus one') : guest.plusOne.name} be joining you?
                         </legend>
                         <RadioPair
                           name="plusOneAttending"
@@ -227,9 +259,9 @@ export default function RSVPPage() {
                       </fieldset>
 
                       {plusOneAttending === true && (
-                        <div className="rsvp-field">
+                        <div className="rsvp-field rsvp-reveal">
                           <label className="rsvp-field-label" htmlFor="plusOneDietary">
-                            Any dietary restrictions for {guest.plusOne.name.toLowerCase().includes('plus 1') ? 'your plus one' : guest.plusOne.name}?
+                            Any dietary restrictions for {guest.plusOne.name.toLowerCase().includes('plus 1') ? (plusOneName.trim() || 'your plus one') : guest.plusOne.name}?
                           </label>
                           <textarea
                             id="plusOneDietary"
@@ -244,7 +276,7 @@ export default function RSVPPage() {
                     </>
                   )}
 
-                  <div className="rsvp-field">
+                  <div className="rsvp-field rsvp-reveal">
                     <label className="rsvp-field-label" htmlFor="song">
                       Song request for the dance floor?
                     </label>
@@ -257,7 +289,7 @@ export default function RSVPPage() {
                       className="rsvp-input"
                     />
                   </div>
-                </>
+                </div>
               )}
 
               {attending !== null && (
@@ -275,9 +307,9 @@ export default function RSVPPage() {
           {phase === 'success' && (
             <div className="rsvp-state rsvp-state--success">
               <div className="rsvp-state__floretes">
-                <Florete color="#e8761f" />
-                <Florete color="#e8761f" />
-                <Florete color="#e8761f" />
+                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" />
+                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" />
+                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" />
               </div>
               <p className="rsvp-state__title">
                 {attending ? '¡Nos vemos!' : "We'll miss you!"}
@@ -304,10 +336,16 @@ export default function RSVPPage() {
 
         </div>
 
-        <footer className="rsvp-page-footer">
-          <img src="/images/tumi.png" alt="" aria-hidden="true" className="rsvp-footer-tumi" />
-          <img src="/images/tumi.png" alt="" aria-hidden="true" className="rsvp-footer-tumi rsvp-footer-tumi--flip" />
-        </footer>
+        {phase === 'success' && attending === true && (
+          <footer className="rsvp-page-footer">
+            <div className="rsvp-footer-dogs">
+              <img src="/images/zeus.png" alt="Zeus" className="rsvp-footer-dog" />
+              <img src="/images/mia.png" alt="Mia" className="rsvp-footer-dog" />
+              <img src="/images/otis.png" alt="Otis" className="rsvp-footer-dog" />
+            </div>
+            <p className="rsvp-footer-dogs-note">We're so excited for our parents! We'll be home protecting the house but drinks are on us!</p>
+          </footer>
+        )}
       </div>
     </div>
   );
