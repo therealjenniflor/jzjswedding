@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/rsvp", "destination": "/rsvp.html" },
+    { "source": "/rsvp/:path*", "destination": "/rsvp.html" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
