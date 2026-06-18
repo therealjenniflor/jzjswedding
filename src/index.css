@@ -786,7 +786,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 .faq-question-wrap { display: flex; flex-direction: column; gap: 2px; }
 .faq-question-es { font-family: 'Source Sans 3', sans-serif; font-weight: 200; font-size: 20px; color: #e8761f; opacity: .65; line-height: 1.2; }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 260ms ease; }
-.faq-answer p { margin: 0; padding: 0 28px 16px 75px; font-family: var(--ff-serif); font-size: 16px; line-height: 1.7; color: #f5ecdc; opacity: .86; }
+.faq-answer p { margin: 0; padding: 0 28px 16px 75px; font-family: 'Source Sans 3', sans-serif; font-weight: 200; font-size: 16px; line-height: 1.7; color: #f5ecdc; opacity: .86; }
 .faq-answer p.faq-es { padding-top: 0; padding-bottom: 28px; font-size: 16px; font-family: 'Source Sans 3', sans-serif; font-weight: 200; color: #e8761f; opacity: .75; }
 
 /* ─── Stay Tuned ─────────────────────────────────────────── */

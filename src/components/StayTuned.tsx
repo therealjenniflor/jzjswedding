@@ -34,7 +34,7 @@ export default function StayTuned() {
           <div className="section-title__sub">más por venir</div>
         </div>
         <p className="stay-tuned__body">
-          We'll continue to update this website as we get closer to the special date — please check back for the latest details, additions, and final schedule.
+          We'll continue to update this website as we get closer to the special date. Please check back for the latest details, additions, and final schedule.
         </p>
         <div className="stay-tuned__border-line stay-tuned__border-line--bottom"></div>
       </div>

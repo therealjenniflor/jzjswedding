@@ -187,7 +187,7 @@ export default function RSVPPage() {
             <div className="rsvp-state rsvp-state--done">
               <p className="rsvp-state__title">{"You're all set"}, {firstName}!</p>
               <p className="rsvp-state__body">
-                We already have your RSVP —{' '}
+                We already have your RSVP,{' '}
                 <strong>{guest.status === 'Attending' ? "you're attending" : "you're not attending"}</strong>.
                 If something changed, please reach out to us directly.
               </p>
@@ -287,7 +287,7 @@ export default function RSVPPage() {
                       type="text"
                       value={song}
                       onChange={e => setSong(e.target.value)}
-                      placeholder="Artist — Song title"
+                      placeholder="Artist / Song title"
                       className="rsvp-input"
                     />
                   </div>
