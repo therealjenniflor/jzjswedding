@@ -81,7 +81,49 @@ export default function RSVPPage() {
 
   const [phase, setPhase] = useState<Phase>('loading');
   const [guest, setGuest] = useState<Guest | null>(null);
+  const [lang, setLang] = useState<'en' | 'es'>(params.get('lang') === 'es' ? 'es' : 'en');
   const cardRef = useRef<HTMLDivElement>(null);
+
+  const t = {
+    eyebrow:       lang === 'es' ? 'Jhonatan y Jennifer' : 'Jhonatan & Jennifer',
+    dueBy:         lang === 'es' ? 'Antes del 9 de octubre, 2026' : 'Due by October 9th, 2026',
+    weddingDate:   lang === 'es' ? 'Boda · Viernes, 30 de octubre, 2026' : 'Wedding · Friday, October 30th, 2026',
+    loading:       lang === 'es' ? 'Buscando tu invitación…' : 'Looking up your invitation…',
+    notFoundTitle: lang === 'es' ? 'Invitación no encontrada' : 'Invitation not found',
+    notFoundBody:  lang === 'es' ? 'Este enlace no coincide con ninguna invitación. Por favor verifica el enlace y vuelve a intentarlo.' : "This link doesn't match any invitation in our records. Please check the link in your invitation and try again.",
+    alreadyTitle:  lang === 'es' ? '¡Ya estás confirmado!' : "You're all set",
+    alreadyBody:   (status: string | null) => lang === 'es'
+      ? `Ya tenemos tu confirmación — ${status === 'Attending' ? 'asistirás' : 'no asistirás'}. Si algo cambió, contáctanos directamente.`
+      : `We already have your RSVP, ${status === 'Attending' ? "you're attending" : "you're not attending"}. If something changed, please reach out to us directly.`,
+    greeting:      lang === 'es' ? 'Hola,' : 'Hello,',
+    lead:          lang === 'es' ? 'Nos encantaría celebrar contigo. Por favor haznos saber si podrás acompañarnos.' : "We'd love to celebrate with you. Please let us know if you'll be joining us.",
+    willAttend:    lang === 'es' ? '¿Asistirás?' : 'Will you be attending?',
+    joyfully:      lang === 'es' ? 'Con mucho gusto acepto' : 'Joyfully accepts',
+    regretfully:   lang === 'es' ? 'Con pesar declino' : 'Regretfully declines',
+    dietary:       lang === 'es' ? '¿Alguna restricción alimentaria o alergia?' : 'Any dietary restrictions or allergies?',
+    dietaryPlaceholder: lang === 'es' ? 'ej. vegetariano, sin gluten, alergia a nueces…' : 'e.g. vegetarian, gluten-free, nut allergy…',
+    plusOneSection: lang === 'es' ? 'Acompañante' : 'Plus one',
+    willJoin:      (name: string) => lang === 'es' ? `¿${name} te acompañará?` : `Will ${name} be joining you?`,
+    yesJoining:    lang === 'es' ? 'Sí, asistirá' : 'Yes, joining',
+    noAttending:   lang === 'es' ? 'No, no asistirá' : 'No, not attending',
+    dietaryFor:    (name: string) => lang === 'es' ? `¿Alguna restricción alimentaria para ${name}?` : `Any dietary restrictions for ${name}?`,
+    song:          lang === 'es' ? '¿Una canción para la pista de baile?' : 'Song request for the dance floor?',
+    songPlaceholder: lang === 'es' ? 'Artista / Título de la canción' : 'Artist / Song title',
+    beforeYouGo:   lang === 'es' ? 'Antes de continuar' : 'Before you go',
+    ageCheck:      lang === 'es' ? 'Entiendo que todos en esta invitación son mayores de 18 años' : 'I understand that everyone in this invite is 18+',
+    ageNote:       lang === 'es' ? 'Los menores de 18 años serán amablemente invitados a retirarse del lugar.' : 'Guests under 18 will be kindly asked to leave the venue.',
+    inviteCheck:   lang === 'es' ? 'Solo las personas mencionadas en esta invitación asistirán' : 'Only those named in this invitation will be joining',
+    send:          lang === 'es' ? 'Enviar mi confirmación' : 'Send my RSVP',
+    sending:       lang === 'es' ? 'Enviando…' : 'Sending…',
+    successTitle:  (attending: boolean | null) => attending ? '¡Nos vemos!' : (lang === 'es' ? '¡Te extrañaremos!' : "We'll miss you!"),
+    successBody:   (attending: boolean | null) => attending
+      ? (lang === 'es' ? '¡No podemos esperar para celebrar contigo! ¡Nos vemos el 30 de octubre!' : "We can't wait to celebrate with you. See you on October 30th!")
+      : (lang === 'es' ? '¡Gracias por avisarnos. ¡Estaremos pensando en ti!' : "Thank you for letting us know. We'll be thinking of you!"),
+    errorTitle:    lang === 'es' ? 'Algo salió mal' : 'Something went wrong',
+    errorBody:     lang === 'es' ? 'No pudimos guardar tu confirmación. Por favor intenta de nuevo o contáctanos directamente.' : "We couldn't save your RSVP. Please try again or reach out to us directly.",
+    tryAgain:      lang === 'es' ? 'Intentar de nuevo' : 'Try again',
+    dogsNote:      lang === 'es' ? '¡Estamos muy emocionados por nuestros papás! Nosotros cuidaremos la casa, ¡pero las bebidas corren por nuestra cuenta!' : "We're so excited for our parents! We'll be home protecting the house but drinks are on us!",
+  };
 
   const [attending, setAttending]           = useState<boolean | null>(null);
   const [dietary, setDietary]               = useState('');
@@ -149,14 +191,19 @@ export default function RSVPPage() {
     <div className="rsvp-page">
       <div className="rsvp-page__inner">
         <header className="rsvp-header">
-          <div className="rsvp-eyebrow">Jhonatan &amp; Jennifer</div>
+          <div className="nuestro-dia__lang" style={{ marginBottom: 8 }}>
+            <button className={`nuestro-dia__lang-btn${lang === 'en' ? ' nuestro-dia__lang-btn--active' : ''}`} onClick={() => setLang('en')}>EN</button>
+            <span className="nuestro-dia__lang-pip" />
+            <button className={`nuestro-dia__lang-btn${lang === 'es' ? ' nuestro-dia__lang-btn--active' : ''}`} onClick={() => setLang('es')}>ES</button>
+          </div>
+          <div className="rsvp-eyebrow">{t.eyebrow}</div>
           <h1 className="rsvp-title">
             <Florete color="#b85530" />
             R.S.V.P
             <Florete color="#b85530" />
           </h1>
-          <p className="rsvp-subtitle">Due by October 9th, 2026</p>
-          <p className="rsvp-wedding-date">Wedding · Friday, October 30th, 2026</p>
+          <p className="rsvp-subtitle">{t.dueBy}</p>
+          <p className="rsvp-wedding-date">{t.weddingDate}</p>
         </header>
 
         <div
@@ -171,47 +218,39 @@ export default function RSVPPage() {
 
           {phase === 'loading' && (
             <div className="rsvp-state rsvp-state--loading">
-              <p>Looking up your invitation…</p>
+              <p>{t.loading}</p>
             </div>
           )}
 
           {phase === 'not-found' && (
             <div className="rsvp-state rsvp-state--error">
-              <p className="rsvp-state__title">Invitation not found</p>
-              <p className="rsvp-state__body">
-                This link doesn't match any invitation in our records. Please check the link in your invitation and try again.
-              </p>
+              <p className="rsvp-state__title">{t.notFoundTitle}</p>
+              <p className="rsvp-state__body">{t.notFoundBody}</p>
             </div>
           )}
 
           {phase === 'already-rsvpd' && guest && (
             <div className="rsvp-state rsvp-state--done">
-              <p className="rsvp-state__title">{"You're all set"}, {firstName}!</p>
-              <p className="rsvp-state__body">
-                We already have your RSVP,{' '}
-                <strong>{guest.status === 'Attending' ? "you're attending" : "you're not attending"}</strong>.
-                If something changed, please reach out to us directly.
-              </p>
+              <p className="rsvp-state__title">{t.alreadyTitle}, {firstName}!</p>
+              <p className="rsvp-state__body">{t.alreadyBody(guest.status)}</p>
             </div>
           )}
 
           {(phase === 'form' || phase === 'submitting') && guest && (
             <form className="rsvp-form" onSubmit={handleSubmit}>
               <p className="rsvp-form__greeting">
-                Hello,{' '}
+                {t.greeting}{' '}
                 <span className="rsvp-form__name">
                   {guest.plusOne
                     ? `${guest.name} & ${guest.plusOne.name.toLowerCase().includes('plus 1') ? 'Plus 1' : guest.plusOne.name}`
                     : guest.name}
                 </span>
               </p>
-              <p className="rsvp-form__lead">
-                {"We'd"} love to celebrate with you. Please let us know if {"you'll"} be joining us.
-              </p>
+              <p className="rsvp-form__lead">{t.lead}</p>
 
               {/* Primary guest attendance */}
               <fieldset className="rsvp-fieldset">
-                <legend className="rsvp-field-label">Will you be attending?</legend>
+                <legend className="rsvp-field-label">{t.willAttend}</legend>
                 <RadioPair
                   name="attending"
                   value={attending}
@@ -220,6 +259,8 @@ export default function RSVPPage() {
                     setTimeout(() => cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
                   }}
                   onYes={fireWeddingConfetti}
+                  yesLabel={t.joyfully}
+                  noLabel={t.regretfully}
                 />
               </fieldset>
 
@@ -227,13 +268,13 @@ export default function RSVPPage() {
                 <div className="rsvp-reveal">
                   <div className="rsvp-field">
                     <label className="rsvp-field-label" htmlFor="dietary">
-                      Any dietary restrictions or allergies?
+                      {t.dietary}
                     </label>
                     <textarea
                       id="dietary"
                       value={dietary}
                       onChange={e => setDietary(e.target.value)}
-                      placeholder="e.g. vegetarian, gluten-free, nut allergy…"
+                      placeholder={t.dietaryPlaceholder}
                       className="rsvp-textarea"
                       rows={2}
                     />
@@ -244,33 +285,33 @@ export default function RSVPPage() {
                     <>
                       <div className="rsvp-section-divider">
                         <span className="rsvp-section-divider__line" />
-                        <span className="rsvp-section-divider__label">Plus one</span>
+                        <span className="rsvp-section-divider__label">{t.plusOneSection}</span>
                         <span className="rsvp-section-divider__line" />
                       </div>
 
                       <fieldset className="rsvp-fieldset">
                         <legend className="rsvp-field-label">
-                          Will {guest.plusOne.name.toLowerCase().includes('plus 1') ? (plusOneName.trim() || 'your plus one') : guest.plusOne.name} be joining you?
+                          {t.willJoin(guest.plusOne.name.toLowerCase().includes('plus 1') ? (plusOneName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one')) : guest.plusOne.name)}
                         </legend>
                         <RadioPair
                           name="plusOneAttending"
                           value={plusOneAttending}
                           onChange={setPlusOneAttending}
-                          yesLabel="Yes, joining"
-                          noLabel="No, not attending"
+                          yesLabel={t.yesJoining}
+                          noLabel={t.noAttending}
                         />
                       </fieldset>
 
                       {plusOneAttending === true && (
                         <div className="rsvp-field rsvp-reveal">
                           <label className="rsvp-field-label" htmlFor="plusOneDietary">
-                            Any dietary restrictions for {guest.plusOne.name.toLowerCase().includes('plus 1') ? (plusOneName.trim() || 'your plus one') : guest.plusOne.name}?
+                            {t.dietaryFor(guest.plusOne.name.toLowerCase().includes('plus 1') ? (plusOneName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one')) : guest.plusOne.name)}
                           </label>
                           <textarea
                             id="plusOneDietary"
                             value={plusOneDietary}
                             onChange={e => setPlusOneDietary(e.target.value)}
-                            placeholder="e.g. vegetarian, gluten-free, nut allergy…"
+                            placeholder={t.dietaryPlaceholder}
                             className="rsvp-textarea"
                             rows={2}
                           />
@@ -281,14 +322,14 @@ export default function RSVPPage() {
 
                   <div className="rsvp-field rsvp-reveal">
                     <label className="rsvp-field-label" htmlFor="song">
-                      Song request for the dance floor?
+                      {t.song}
                     </label>
                     <input
                       id="song"
                       type="text"
                       value={song}
                       onChange={e => setSong(e.target.value)}
-                      placeholder="Artist / Song title"
+                      placeholder={t.songPlaceholder}
                       className="rsvp-input"
                     />
                   </div>
@@ -301,7 +342,7 @@ export default function RSVPPage() {
                     <>
                       <div className="rsvp-section-divider">
                         <span className="rsvp-section-divider__line" />
-                        <span className="rsvp-section-divider__label">Before you go</span>
+                        <span className="rsvp-section-divider__label">{t.beforeYouGo}</span>
                         <span className="rsvp-section-divider__line" />
                       </div>
                       <label className="rsvp-age-check">
@@ -311,13 +352,9 @@ export default function RSVPPage() {
                           onChange={e => setAgeConfirmed(e.target.checked)}
                         />
                         <span className="rsvp-age-check__box" />
-                        <span className="rsvp-age-check__text">
-                          I understand that everyone in this invite is 18+
-                        </span>
+                        <span className="rsvp-age-check__text">{t.ageCheck}</span>
                       </label>
-                      <p className="rsvp-age-note">
-                        Guests under 18 will be kindly asked to leave the venue.
-                      </p>
+                      <p className="rsvp-age-note">{t.ageNote}</p>
 
                       {guest.plusOne && (
                         <label className="rsvp-age-check" style={{ marginTop: 16 }}>
@@ -327,9 +364,7 @@ export default function RSVPPage() {
                             onChange={e => setInviteConfirmed(e.target.checked)}
                           />
                           <span className="rsvp-age-check__box" />
-                          <span className="rsvp-age-check__text">
-                            Only those named in this invitation will be joining
-                          </span>
+                          <span className="rsvp-age-check__text">{t.inviteCheck}</span>
                         </label>
                       )}
                     </>
@@ -345,7 +380,7 @@ export default function RSVPPage() {
                       (attending && guest.plusOne !== null && plusOneAttending === null)
                     }
                   >
-                    {phase === 'submitting' ? 'Sending…' : 'Send my RSVP'}
+                    {phase === 'submitting' ? t.sending : t.send}
                   </button>
                 </>
               )}
@@ -359,25 +394,17 @@ export default function RSVPPage() {
                 <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" />
                 <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" />
               </div>
-              <p className="rsvp-state__title">
-                {attending ? '¡Nos vemos!' : "We'll miss you!"}
-              </p>
-              <p className="rsvp-state__body">
-                {attending
-                  ? "We can't wait to celebrate with you. See you on October 4th!"
-                  : "Thank you for letting us know. We'll be thinking of you!"}
-              </p>
+              <p className="rsvp-state__title">{t.successTitle(attending)}</p>
+              <p className="rsvp-state__body">{t.successBody(attending)}</p>
             </div>
           )}
 
           {phase === 'error' && (
             <div className="rsvp-state rsvp-state--error">
-              <p className="rsvp-state__title">Something went wrong</p>
-              <p className="rsvp-state__body">
-                We couldn't save your RSVP. Please try again or reach out to us directly.
-              </p>
+              <p className="rsvp-state__title">{t.errorTitle}</p>
+              <p className="rsvp-state__body">{t.errorBody}</p>
               <button className="rsvp-submit rsvp-submit--outline" onClick={() => setPhase('form')}>
-                Try again
+                {t.tryAgain}
               </button>
             </div>
           )}
@@ -391,7 +418,7 @@ export default function RSVPPage() {
               <img src="/images/mia.png" alt="Mia" className="rsvp-footer-dog" />
               <img src="/images/otis.png" alt="Otis" className="rsvp-footer-dog" />
             </div>
-            <p className="rsvp-footer-dogs-note">We're so excited for our parents! We'll be home protecting the house but drinks are on us!</p>
+            <p className="rsvp-footer-dogs-note">{t.dogsNote}</p>
           </footer>
         )}
       </div>
