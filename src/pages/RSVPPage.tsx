@@ -111,6 +111,8 @@ export default function RSVPPage() {
     yesJoining:    lang === 'es' ? 'Sí, asistirá' : 'Yes, joining',
     noAttending:   lang === 'es' ? 'No, no asistirá' : 'No, not attending',
     dietaryFor:    (name: string) => lang === 'es' ? `¿Alguna restricción alimentaria para ${name}?` : `Any dietary restrictions for ${name}?`,
+    emailLabel:    lang === 'es' ? 'Correo electrónico' : 'Email',
+    emailHelper:   lang === 'es' ? 'Se usará para actualizaciones y recordatorios' : 'Will be used for updates and reminders',
     song:          lang === 'es' ? '¿Una canción para la pista de baile?' : 'Song request for the dance floor?',
     songPlaceholder: lang === 'es' ? 'Artista / Título de la canción' : 'Artist / Song title',
     beforeYouGo:   lang === 'es' ? 'Antes de continuar' : 'Before you go',
@@ -138,6 +140,7 @@ export default function RSVPPage() {
   const [guestLastName, setGuestLastName]   = useState('');
   const [plusOneFirstName, setPlusOneFirstName] = useState('');
   const [plusOneLastName, setPlusOneLastName]   = useState('');
+  const [email, setEmail]               = useState('');
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [inviteConfirmed, setInviteConfirmed] = useState(false);
 
@@ -178,6 +181,7 @@ export default function RSVPPage() {
         body: JSON.stringify({
           token,
           attending,
+          email,
           dietary,
           song,
           guestFirstName,
@@ -304,6 +308,19 @@ export default function RSVPPage() {
                   </div>
 
                   <div className="rsvp-field">
+                    <label className="rsvp-field-label" htmlFor="email">{t.emailLabel}</label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                      className="rsvp-input"
+                      required
+                    />
+                    <p className="rsvp-field-helper">{t.emailHelper}</p>
+                  </div>
+
+                  <div className="rsvp-field">
                     <label className="rsvp-field-label" htmlFor="dietary">
                       {t.dietary}
                     </label>
@@ -326,29 +343,6 @@ export default function RSVPPage() {
                         <span className="rsvp-section-divider__line" />
                       </div>
 
-                      <div className="rsvp-name-fields">
-                        <div className="rsvp-field rsvp-field--inline">
-                          <label className="rsvp-field-label" htmlFor="plusOneFirstName">{t.plusOneFirstNameLabel}</label>
-                          <input
-                            id="plusOneFirstName"
-                            type="text"
-                            value={plusOneFirstName}
-                            onChange={e => setPlusOneFirstName(e.target.value)}
-                            className="rsvp-input"
-                          />
-                        </div>
-                        <div className="rsvp-field rsvp-field--inline">
-                          <label className="rsvp-field-label" htmlFor="plusOneLastName">{t.plusOneLastNameLabel}</label>
-                          <input
-                            id="plusOneLastName"
-                            type="text"
-                            value={plusOneLastName}
-                            onChange={e => setPlusOneLastName(e.target.value)}
-                            className="rsvp-input"
-                          />
-                        </div>
-                      </div>
-
                       <fieldset className="rsvp-fieldset">
                         <legend className="rsvp-field-label">
                           {t.willJoin(plusOneFirstName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one'))}
@@ -363,18 +357,42 @@ export default function RSVPPage() {
                       </fieldset>
 
                       {plusOneAttending === true && (
-                        <div className="rsvp-field rsvp-reveal">
-                          <label className="rsvp-field-label" htmlFor="plusOneDietary">
-                            {t.dietaryFor(plusOneFirstName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one'))}
-                          </label>
-                          <textarea
-                            id="plusOneDietary"
-                            value={plusOneDietary}
-                            onChange={e => setPlusOneDietary(e.target.value)}
-                            placeholder={t.dietaryPlaceholder}
-                            className="rsvp-textarea"
-                            rows={2}
-                          />
+                        <div className="rsvp-reveal">
+                          <div className="rsvp-name-fields">
+                            <div className="rsvp-field rsvp-field--inline">
+                              <label className="rsvp-field-label" htmlFor="plusOneFirstName">{t.plusOneFirstNameLabel}</label>
+                              <input
+                                id="plusOneFirstName"
+                                type="text"
+                                value={plusOneFirstName}
+                                onChange={e => setPlusOneFirstName(e.target.value)}
+                                className="rsvp-input"
+                              />
+                            </div>
+                            <div className="rsvp-field rsvp-field--inline">
+                              <label className="rsvp-field-label" htmlFor="plusOneLastName">{t.plusOneLastNameLabel}</label>
+                              <input
+                                id="plusOneLastName"
+                                type="text"
+                                value={plusOneLastName}
+                                onChange={e => setPlusOneLastName(e.target.value)}
+                                className="rsvp-input"
+                              />
+                            </div>
+                          </div>
+                          <div className="rsvp-field">
+                            <label className="rsvp-field-label" htmlFor="plusOneDietary">
+                              {t.dietaryFor(plusOneFirstName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one'))}
+                            </label>
+                            <textarea
+                              id="plusOneDietary"
+                              value={plusOneDietary}
+                              onChange={e => setPlusOneDietary(e.target.value)}
+                              placeholder={t.dietaryPlaceholder}
+                              className="rsvp-textarea"
+                              rows={2}
+                            />
+                          </div>
                         </div>
                       )}
                     </>

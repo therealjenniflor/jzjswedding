@@ -1051,6 +1051,13 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   color: #f5ecdc;
   margin-bottom: 12px;
 }
+.rsvp-field-helper {
+  margin-top: 6px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 12px;
+  color: #c9b89a;
+  letter-spacing: 0.03rem;
+}
 .rsvp-radio-group {
   display: flex;
   flex-direction: column;
