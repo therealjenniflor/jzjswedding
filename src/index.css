@@ -1020,7 +1020,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   color: #e8761f;
 }
 .rsvp-form__lead {
-  font-family: 'Source Sans 3', sans-serif; font-weight: 200;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 250;
   font-size: 16px;
   color: rgba(245,236,220,.9);
   margin-bottom: 36px;
