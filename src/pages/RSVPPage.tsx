@@ -211,6 +211,9 @@ export default function RSVPPage() {
 
   return (
     <div className="rsvp-page">
+      <a href="https://www.jzjs.wedding" className="rsvp-home-link">
+        ← {lang === 'es' ? 'Sitio de la boda' : 'Wedding site'}
+      </a>
       <div className="rsvp-page__inner">
         <header className="rsvp-header">
           <div className="nuestro-dia__lang" style={{ marginBottom: 8 }}>

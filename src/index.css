@@ -920,6 +920,20 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 
 /* ─── RSVP Page ──────────────────────────────────────────── */
+.rsvp-home-link {
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  z-index: 100;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: rgba(245,236,220,.55);
+  text-decoration: none;
+  transition: color .2s;
+}
+.rsvp-home-link:hover { color: rgba(245,236,220,.9); }
 .rsvp-page {
   min-height: 100vh;
   background: linear-gradient(rgba(10,4,2,.82), rgba(10,4,2,.82)), url('/images/wedgewood.jpg') center/cover no-repeat fixed;
@@ -970,7 +984,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 .rsvp-subtitle {
   font-family: 'Source Sans 3', sans-serif;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 19px;
   color: rgba(245,236,220,.55);
   margin-top: 0;
