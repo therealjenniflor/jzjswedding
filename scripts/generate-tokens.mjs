@@ -17,7 +17,9 @@ const { Client } = pkg;
 import { randomBytes } from 'crypto';
 
 function shortToken() {
-  return randomBytes(6).toString('base64url').slice(0, 8);
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const bytes = randomBytes(8);
+  return Array.from(bytes, b => chars[b % chars.length]).join('');
 }
 import { config } from 'dotenv';
 import { fileURLToPath } from 'url';

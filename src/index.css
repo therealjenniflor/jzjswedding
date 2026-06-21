@@ -1034,6 +1034,15 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 .rsvp-field {
   margin-bottom: 24px;
 }
+.rsvp-name-fields {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.rsvp-name-fields .rsvp-field--inline {
+  flex: 1;
+  margin-bottom: 0;
+}
 .rsvp-field-label {
   display: block;
   font-family: 'Source Sans 3', sans-serif; font-weight: 200;

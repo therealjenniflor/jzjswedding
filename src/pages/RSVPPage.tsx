@@ -95,7 +95,11 @@ export default function RSVPPage() {
     alreadyBody:   (status: string | null) => lang === 'es'
       ? `Ya tenemos tu confirmación — ${status === 'Attending' ? 'asistirás' : 'no asistirás'}. Si algo cambió, contáctanos directamente.`
       : `We already have your RSVP, ${status === 'Attending' ? "you're attending" : "you're not attending"}. If something changed, please reach out to us directly.`,
-    greeting:      lang === 'es' ? 'Hola,' : 'Hello,',
+    greeting:      lang === 'es' ? 'Hola,' : 'Hi,',
+    firstNameLabel: lang === 'es' ? 'Nombre' : 'First Name',
+    lastNameLabel:  lang === 'es' ? 'Apellido' : 'Last Name',
+    plusOneFirstNameLabel: lang === 'es' ? 'Nombre del acompañante' : "Plus One's First Name",
+    plusOneLastNameLabel:  lang === 'es' ? 'Apellido del acompañante' : "Plus One's Last Name",
     lead:          lang === 'es' ? 'Nos encantaría celebrar contigo. Por favor haznos saber si podrás acompañarnos.' : "We'd love to celebrate with you. Please let us know if you'll be joining us.",
     willAttend:    lang === 'es' ? '¿Asistirás?' : 'Will you be attending?',
     joyfully:      lang === 'es' ? 'Con mucho gusto acepto' : 'Joyfully accepts',
@@ -130,7 +134,10 @@ export default function RSVPPage() {
   const [song, setSong]                     = useState('');
   const [plusOneAttending, setPlusOneAttending] = useState<boolean | null>(null);
   const [plusOneDietary, setPlusOneDietary] = useState('');
-  const [plusOneName, setPlusOneName] = useState('');
+  const [guestFirstName, setGuestFirstName] = useState('');
+  const [guestLastName, setGuestLastName]   = useState('');
+  const [plusOneFirstName, setPlusOneFirstName] = useState('');
+  const [plusOneLastName, setPlusOneLastName]   = useState('');
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [inviteConfirmed, setInviteConfirmed] = useState(false);
 
@@ -141,6 +148,14 @@ export default function RSVPPage() {
       .then(r => r.ok ? r.json() : Promise.reject(r.status))
       .then((data: Guest) => {
         setGuest(data);
+        const parts = data.name.trim().split(/\s+/);
+        setGuestFirstName(parts[0] ?? '');
+        setGuestLastName(parts.slice(1).join(' '));
+        if (data.plusOne && !data.plusOne.name.toLowerCase().includes('plus 1')) {
+          const pp = data.plusOne.name.trim().split(/\s+/);
+          setPlusOneFirstName(pp[0] ?? '');
+          setPlusOneLastName(pp.slice(1).join(' '));
+        }
         if (data.status && data.status !== 'Pending') {
           setPhase('already-rsvpd');
         } else {
@@ -165,10 +180,13 @@ export default function RSVPPage() {
           attending,
           dietary,
           song,
+          guestFirstName,
+          guestLastName,
           plusOneId: guest?.plusOne?.id ?? null,
           plusOneAttending: guest?.plusOne ? plusOneAttending : null,
           plusOneDietary,
-          plusOneName: guest?.plusOne?.name.toLowerCase().includes('plus 1') ? plusOneName : undefined,
+          plusOneFirstName: guest?.plusOne ? plusOneFirstName : undefined,
+          plusOneLastName: guest?.plusOne ? plusOneLastName : undefined,
         }),
       });
       if (!res.ok) throw new Error('server error');
@@ -185,7 +203,7 @@ export default function RSVPPage() {
     }
   }
 
-  const firstName = guest?.name.split(' ')[0] ?? '';
+  const firstName = guestFirstName || (guest?.name?.split(' ')[0] ?? '');
 
   return (
     <div className="rsvp-page">
@@ -240,11 +258,7 @@ export default function RSVPPage() {
             <form className="rsvp-form" onSubmit={handleSubmit}>
               <p className="rsvp-form__greeting">
                 {t.greeting}{' '}
-                <span className="rsvp-form__name">
-                  {guest.plusOne
-                    ? `${guest.name} & ${guest.plusOne.name.toLowerCase().includes('plus 1') ? 'Plus 1' : guest.plusOne.name}`
-                    : guest.name}
-                </span>
+                <span className="rsvp-form__name">{guestFirstName || firstName}</span>
               </p>
               <p className="rsvp-form__lead">{t.lead}</p>
 
@@ -266,6 +280,29 @@ export default function RSVPPage() {
 
               {attending === true && (
                 <div className="rsvp-reveal">
+                  <div className="rsvp-name-fields">
+                    <div className="rsvp-field rsvp-field--inline">
+                      <label className="rsvp-field-label" htmlFor="guestFirstName">{t.firstNameLabel}</label>
+                      <input
+                        id="guestFirstName"
+                        type="text"
+                        value={guestFirstName}
+                        onChange={e => setGuestFirstName(e.target.value)}
+                        className="rsvp-input"
+                      />
+                    </div>
+                    <div className="rsvp-field rsvp-field--inline">
+                      <label className="rsvp-field-label" htmlFor="guestLastName">{t.lastNameLabel}</label>
+                      <input
+                        id="guestLastName"
+                        type="text"
+                        value={guestLastName}
+                        onChange={e => setGuestLastName(e.target.value)}
+                        className="rsvp-input"
+                      />
+                    </div>
+                  </div>
+
                   <div className="rsvp-field">
                     <label className="rsvp-field-label" htmlFor="dietary">
                       {t.dietary}
@@ -289,9 +326,32 @@ export default function RSVPPage() {
                         <span className="rsvp-section-divider__line" />
                       </div>
 
+                      <div className="rsvp-name-fields">
+                        <div className="rsvp-field rsvp-field--inline">
+                          <label className="rsvp-field-label" htmlFor="plusOneFirstName">{t.plusOneFirstNameLabel}</label>
+                          <input
+                            id="plusOneFirstName"
+                            type="text"
+                            value={plusOneFirstName}
+                            onChange={e => setPlusOneFirstName(e.target.value)}
+                            className="rsvp-input"
+                          />
+                        </div>
+                        <div className="rsvp-field rsvp-field--inline">
+                          <label className="rsvp-field-label" htmlFor="plusOneLastName">{t.plusOneLastNameLabel}</label>
+                          <input
+                            id="plusOneLastName"
+                            type="text"
+                            value={plusOneLastName}
+                            onChange={e => setPlusOneLastName(e.target.value)}
+                            className="rsvp-input"
+                          />
+                        </div>
+                      </div>
+
                       <fieldset className="rsvp-fieldset">
                         <legend className="rsvp-field-label">
-                          {t.willJoin(guest.plusOne.name.toLowerCase().includes('plus 1') ? (plusOneName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one')) : guest.plusOne.name)}
+                          {t.willJoin(plusOneFirstName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one'))}
                         </legend>
                         <RadioPair
                           name="plusOneAttending"
@@ -305,7 +365,7 @@ export default function RSVPPage() {
                       {plusOneAttending === true && (
                         <div className="rsvp-field rsvp-reveal">
                           <label className="rsvp-field-label" htmlFor="plusOneDietary">
-                            {t.dietaryFor(guest.plusOne.name.toLowerCase().includes('plus 1') ? (plusOneName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one')) : guest.plusOne.name)}
+                            {t.dietaryFor(plusOneFirstName.trim() || (lang === 'es' ? 'tu acompañante' : 'your plus one'))}
                           </label>
                           <textarea
                             id="plusOneDietary"

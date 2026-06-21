@@ -11,7 +11,7 @@ function txt(content: string) {
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { token, attending, dietary, song, plusOneId, plusOneAttending, plusOneDietary } = req.body ?? {};
+  const { token, attending, dietary, song, guestFirstName, guestLastName, plusOneId, plusOneAttending, plusOneDietary, plusOneFirstName, plusOneLastName } = req.body ?? {};
 
   if (!token || typeof token !== 'string') return res.status(400).json({ error: 'Missing token' });
   if (typeof attending !== 'boolean') return res.status(400).json({ error: 'attending must be a boolean' });
@@ -32,6 +32,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await notion.pages.update({
       page_id: pageId,
       properties: {
+        ...(guestFirstName ? { 'First Name': { title: [{ text: { content: String(guestFirstName) } }] } } : {}),
+        ...(guestLastName  ? { 'Last Name':  { rich_text: txt(String(guestLastName)) } } : {}),
         'RSVP Status': { select: { name: attending ? 'Attending' : 'Not Attending' } },
         'Dietary Restrictions': { rich_text: txt(String(dietary ?? '')) },
         'Song Request': { rich_text: txt(String(song ?? '')) },
@@ -43,6 +45,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       await notion.pages.update({
         page_id: plusOneId,
         properties: {
+          ...(plusOneFirstName ? { 'First Name': { title: [{ text: { content: String(plusOneFirstName) } }] } } : {}),
+          ...(plusOneLastName  ? { 'Last Name':  { rich_text: txt(String(plusOneLastName)) } } : {}),
           'RSVP Status': { select: { name: plusOneAttending ? 'Attending' : 'Not Attending' } },
           'Dietary Restrictions': { rich_text: txt(String(plusOneDietary ?? '')) },
         },

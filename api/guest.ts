@@ -26,7 +26,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const page = result.results[0] as any;
     const props = page.properties;
 
-    const name    = props['Name']?.title?.[0]?.plain_text ?? 'Guest';
+    const firstName = props['First Name']?.title?.[0]?.plain_text ?? '';
+    const lastName  = props['Last Name']?.rich_text?.[0]?.plain_text ?? '';
+    const name      = [firstName, lastName].filter(Boolean).join(' ') || 'Guest';
+    const _debug    = { keys: Object.keys(props), firstName: props['First Name'], lastName: props['Last Name'] };
     const status  = props['RSVP Status']?.select?.name ?? null;
     const dietary = props['Dietary Restrictions']?.rich_text?.[0]?.plain_text ?? '';
     const song    = props['Song Request']?.rich_text?.[0]?.plain_text ?? '';
@@ -39,9 +42,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const relPage = await notion.pages.retrieve({ page_id: id }) as any;
       const rp = relPage.properties;
       if (!rp['Generate RSVP']?.checkbox) {
+        const poFirst = rp['First Name']?.title?.[0]?.plain_text ?? '';
+        const poLast  = rp['Last Name']?.rich_text?.[0]?.plain_text ?? '';
         plusOne = {
           id,
-          name:    rp['Name']?.title?.[0]?.plain_text ?? 'Guest',
+          name:    [poFirst, poLast].filter(Boolean).join(' ') || 'Guest',
           status:  rp['RSVP Status']?.select?.name ?? null,
           dietary: rp['Dietary Restrictions']?.rich_text?.[0]?.plain_text ?? '',
         };
@@ -49,7 +54,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    return res.status(200).json({ name, status, dietary, song, plusOne });
+    return res.status(200).json({ name, status, dietary, song, plusOne, _debug });
   } catch (err) {
     console.error('Notion error:', err);
     return res.status(500).json({ error: 'Failed to look up guest' });
