@@ -456,6 +456,9 @@ export default function RSVPPage() {
               </div>
               <p className="rsvp-state__title">{t.successTitle(attending)}</p>
               <p className="rsvp-state__body">{t.successBody(attending)}</p>
+              <a href="https://www.jzjs.wedding" className="rsvp-back-link">
+                {lang === 'es' ? 'Visitar el sitio de la boda' : 'Visit the wedding site'}
+              </a>
             </div>
           )}
 

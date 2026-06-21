@@ -1277,12 +1277,27 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 .rsvp-state__body {
   font-family: var(--ff-serif);
-  font-style: italic;
-  font-size: 17px;
+  font-style: normal;
+  font-size: 21px;
   color: rgba(245,236,220,.7);
   line-height: 1.7;
   animation: rsvp-fade-up .5s .42s cubic-bezier(.22,1,.36,1) both;
 }
+.rsvp-back-link {
+  display: inline-block;
+  margin-top: 24px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 200;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: #e8761f;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(232,118,31,.35);
+  transition: color .2s;
+  animation: rsvp-fade-up .5s .6s cubic-bezier(.22,1,.36,1) both;
+}
+.rsvp-back-link:hover { color: #f5a04a; }
 @keyframes rsvp-fade-up {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
