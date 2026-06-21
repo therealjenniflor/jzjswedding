@@ -119,6 +119,7 @@ export default function RSVPPage() {
     ageCheck:      lang === 'es' ? 'Entiendo que todos en esta invitación son mayores de 18 años' : 'I understand that everyone in this invite is 18+',
     ageNote:       lang === 'es' ? 'Los menores de 18 años serán amablemente invitados a retirarse del lugar.' : 'Guests under 18 will be kindly asked to leave the venue.',
     inviteCheck:   lang === 'es' ? 'Solo las personas mencionadas en esta invitación asistirán' : 'Only those named in this invitation will be joining',
+    inviteNote:    lang === 'es' ? 'Por respeto a todos, quienes no estén en la invitación serán invitados a retirarse.' : 'Out of respect for our guests, anyone not on the invitation will be asked to leave.',
     send:          lang === 'es' ? 'Enviar mi confirmación' : 'Send my RSVP',
     sending:       lang === 'es' ? 'Enviando…' : 'Sending…',
     successTitle:  (attending: boolean | null) => attending ? '¡Nos vemos!' : (lang === 'es' ? '¡Te extrañaremos!' : "We'll miss you!"),
@@ -438,15 +439,18 @@ export default function RSVPPage() {
                       <p className="rsvp-age-note">{t.ageNote}</p>
 
                       {guest.plusOne && (
-                        <label className="rsvp-age-check" style={{ marginTop: 16 }}>
-                          <input
-                            type="checkbox"
-                            checked={inviteConfirmed}
-                            onChange={e => setInviteConfirmed(e.target.checked)}
-                          />
-                          <span className="rsvp-age-check__box" />
-                          <span className="rsvp-age-check__text">{t.inviteCheck}</span>
-                        </label>
+                        <>
+                          <label className="rsvp-age-check" style={{ marginTop: 16 }}>
+                            <input
+                              type="checkbox"
+                              checked={inviteConfirmed}
+                              onChange={e => setInviteConfirmed(e.target.checked)}
+                            />
+                            <span className="rsvp-age-check__box" />
+                            <span className="rsvp-age-check__text">{t.inviteCheck}</span>
+                          </label>
+                          <p className="rsvp-age-note">{t.inviteNote}</p>
+                        </>
                       )}
                     </>
                   )}
