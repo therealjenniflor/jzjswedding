@@ -90,7 +90,7 @@ export default function RSVPPage() {
 
   const t = {
     eyebrow:       lang === 'es' ? 'Jhonatan y Jennifer' : 'Jhonatan & Jennifer',
-    dueBy:         lang === 'es' ? 'Antes del 9 de octubre, 2026' : 'Due by October 9th, 2026',
+    dueBy:         lang === 'es' ? 'Antes del 30 de septiembre, 2026' : 'Due by September 30th, 2026',
     weddingDate:   lang === 'es' ? 'Boda · Viernes, 30 de octubre, 2026' : 'Wedding · Friday, October 30th, 2026',
     loading:       lang === 'es' ? 'Buscando tu invitación…' : 'Looking up your invitation…',
     notFoundTitle: lang === 'es' ? 'Invitación no encontrada' : 'Invitation not found',
