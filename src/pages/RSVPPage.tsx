@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import confetti from 'canvas-confetti';
+import RsvpVideoPopup from '../components/RsvpVideoPopup';
 
 type Phase = 'loading' | 'not-found' | 'form' | 'already-rsvpd' | 'submitting' | 'success' | 'error';
+
+const RSVP_VIDEO_SEEN_KEY = 'jzjs-rsvp-video-seen';
 
 interface PlusOne {
   id: string;
@@ -81,6 +84,7 @@ export default function RSVPPage() {
 
   const [phase, setPhase] = useState<Phase>('loading');
   const [guest, setGuest] = useState<Guest | null>(null);
+  const [videoOpen, setVideoOpen] = useState(() => !window.localStorage.getItem(RSVP_VIDEO_SEEN_KEY));
   const [lang, setLang] = useState<'en' | 'es'>(params.get('lang') === 'es' ? 'es' : 'en');
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -210,11 +214,29 @@ export default function RSVPPage() {
 
   const firstName = guestFirstName || (guest?.name?.split(' ')[0] ?? '');
 
+  function closeVideo() {
+    setVideoOpen(false);
+    window.localStorage.setItem(RSVP_VIDEO_SEEN_KEY, '1');
+  }
+
   return (
     <div className="rsvp-page">
+      <RsvpVideoPopup open={videoOpen} onClose={closeVideo} />
       <a href="https://www.jzjs.wedding" className="rsvp-home-link">
         ← {lang === 'es' ? 'Sitio de la boda' : 'Wedding site'}
       </a>
+      <button
+        type="button"
+        className="rsvp-video-trigger"
+        onClick={() => setVideoOpen(true)}
+        aria-label={lang === 'es' ? 'Ver el video' : 'Watch the video'}
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+          <rect x="1.5" y="4.5" width="15" height="15" rx="2" stroke="currentColor" strokeWidth="1.4" />
+          <path d="M16.5 10.5L21.5 7.5V16.5L16.5 13.5" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+        </svg>
+        <span>{lang === 'es' ? 'Ver video' : 'Watch video'}</span>
+      </button>
       <div className="rsvp-page__inner">
         <header className="rsvp-header">
           <div className="nuestro-dia__lang" style={{ marginBottom: 8 }}>

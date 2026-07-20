@@ -934,6 +934,23 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   transition: color .2s;
 }
 .rsvp-home-link:hover { color: rgba(245,236,220,.9); }
+.rsvp-video-trigger {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: rgba(245,236,220,.55);
+  background: transparent;
+  border: none;
+}
+.rsvp-video-trigger:hover { color: rgba(245,236,220,.9); }
 .rsvp-page {
   min-height: 100vh;
   background: linear-gradient(rgba(10,4,2,.82), rgba(10,4,2,.82)), url('/images/wedgewood.jpg') center/cover no-repeat fixed;
@@ -1580,4 +1597,78 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   /* Footer */
   .footer { padding: 40px 24px 48px; gap: 20px; }
   .footer__tumi { width: 28px; }
+}
+
+/* ─── RSVP Video Popup ───────────────────────────────────── */
+.rsvp-video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(18, 10, 6, .82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: rsvp-video-fade .25s ease;
+}
+.rsvp-video-modal {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  background: #120a06;
+  border: 1px solid rgba(232,118,31,.22);
+  box-shadow: 0 20px 60px rgba(0,0,0,.55);
+  padding: 12px;
+}
+.rsvp-video-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(232,118,31,.35);
+  background: #120a06;
+  color: var(--cream);
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.rsvp-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+.rsvp-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+.rsvp-video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.rsvp-video-play:hover svg circle {
+  fill: rgba(232,118,31,.75);
+}
+@keyframes rsvp-video-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (max-width: 560px) {
+  .rsvp-video-modal { padding: 8px; }
+  .rsvp-video-close { top: -14px; right: -6px; width: 32px; height: 32px; font-size: 19px; }
 }
