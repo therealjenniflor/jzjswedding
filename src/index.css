@@ -692,6 +692,112 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   mask-size: contain;
 }
 
+/* ─── Where to Stay ──────────────────────────────────────── */
+.stay-section {
+  background: #0d1c33;
+  color: #f5ecdc;
+  padding: 100px 56px 110px;
+}
+.stay-section__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.stay-section .section-title h2 {
+  font-family: var(--ff-script);
+  font-weight: 400;
+  font-size: 84px;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1;
+}
+.stay-section .section-title__sub {
+  font-size: 11px;
+}
+.stay-section__grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.stay-card {
+  display: block;
+  background: #06101f;
+  border: 1px solid #2a4a7a;
+  padding: 26px 26px 36px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .2s, transform .2s;
+}
+.stay-card:hover {
+  border-color: #e8761f;
+  transform: translateY(-3px);
+}
+.stay-card__photo-frame {
+  position: relative;
+}
+.stay-card__photo-wrap {
+  border-radius: var(--arch-top);
+  overflow: hidden;
+  border: 1.5px solid #2a4a7a;
+}
+.stay-card__photo {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+.stay-card__keystone {
+  position: absolute;
+  top: -6px; left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 14px; height: 14px;
+  background: #e8761f;
+  border: 1px solid #06101f;
+}
+.stay-card__name {
+  margin-top: 26px;
+  font-family: var(--ff-serif);
+  font-weight: 500;
+  font-size: 19px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #f5ecdc;
+}
+.stay-card__rule {
+  width: 36px; height: 1px;
+  background: #e8761f;
+  margin: 18px auto;
+}
+.stay-card__addr {
+  font-family: var(--ff-serif);
+  font-size: 17px;
+  color: #f5ecdc;
+  opacity: .78;
+}
+.stay-card__desc {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #f5ecdc;
+  opacity: .92;
+  margin-top: 20px;
+}
+.stay-section__note {
+  margin-top: 48px;
+  text-align: center;
+  font-family: var(--ff-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: #f5ecdc;
+  opacity: .65;
+}
+.stay-section__note-es {
+  display: inline-block;
+  margin-top: 4px;
+}
+
 /* ─── Papel Picado Border ────────────────────────────────── */
 .picado-border {
   width: 100%;
@@ -1504,7 +1610,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   .date-card__photo-inner { height: 70vh; }
   .the-day__grid   { grid-template-columns: repeat(3, 1fr); }
   .other-details__grid { grid-template-columns: 1fr; }
-  .stay-section__grid  { grid-template-columns: 1fr; }
+  .stay-section__grid  { grid-template-columns: repeat(2, 1fr); }
   .hero__tiles { display: none; }
   .special-day__body { padding: 44px 28px 56px; }
   .date-card-section, .stay-section__inner,
@@ -1520,6 +1626,8 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 
 @media (max-width: 560px) {
+  .stay-section__grid { grid-template-columns: 1fr; }
+
   /* Hero */
   .hero {
     aspect-ratio: unset;

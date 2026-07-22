@@ -70,7 +70,7 @@ export default function DateCard() {
               style={{ width: '90px', marginBottom: '16px', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.3))' }}
             />
             <div className="date-card__date">October 30<sup>th</sup></div>
-            <div className="date-card__at">at</div>
+            <div className="date-card__at">4:00 PM &middot; at</div>
             <div className="date-card__venue">Sequoia Mansion</div>
             <div className="date-card__location">
               <span>Placerville</span>

@@ -91,7 +91,7 @@ export default function RSVPPage() {
   const t = {
     eyebrow:       lang === 'es' ? 'Jhonatan y Jennifer' : 'Jhonatan & Jennifer',
     dueBy:         lang === 'es' ? 'Antes del 30 de septiembre, 2026' : 'Due by September 30th, 2026',
-    weddingDate:   lang === 'es' ? 'Boda · Viernes, 30 de octubre, 2026' : 'Wedding · Friday, October 30th, 2026',
+    weddingDate:   lang === 'es' ? 'Boda · Viernes, 30 de octubre, 2026 · 4:00 PM' : 'Wedding · Friday, October 30th, 2026 · 4:00 PM',
     loading:       lang === 'es' ? 'Buscando tu invitación…' : 'Looking up your invitation…',
     notFoundTitle: lang === 'es' ? 'Invitación no encontrada' : 'Invitation not found',
     notFoundBody:  lang === 'es' ? 'Este enlace no coincide con ninguna invitación. Por favor verifica el enlace y vuelve a intentarlo.' : "This link doesn't match any invitation in our records. Please check the link in your invitation and try again.",

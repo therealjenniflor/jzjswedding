@@ -4,6 +4,7 @@ import { otomiUrl, otomiStripUrl, P } from './utils/otomi';
 import Hero from './components/Hero';
 import DateCard from './components/DateCard';
 import NuestroDia from './components/NuestroDia';
+// import WhereToStay from './components/WhereToStay'; // hidden for now, re-enable when ready
 import CommonQuestions from './components/CommonQuestions';
 import StayTuned from './components/StayTuned';
 import Footer from './components/Footer';
@@ -25,6 +26,7 @@ function HomePage() {
       <div className="picado-border" aria-hidden="true">
         <img src="images/tiles.png" alt="" />
       </div>
+      {/* <WhereToStay /> */}
       <CommonQuestions />
       <StayTuned />
       <Footer />
