@@ -78,8 +78,8 @@ const faqs = [
   },
   {
     num: '10',
-    q: 'What times does it start and end?',
-    qes: '¿A qué hora empieza y termina?',
+    q: 'What time does the wedding reception begin?',
+    qes: '¿A qué hora comienza la recepción de la boda?',
     a: "Start time is at 4pm, and it will end at 10pm. An exact timeline of events, along with the expected time of arrival, will be added to the site closer to the wedding.",
     aes: 'La hora de inicio es a las 4pm y termina a las 10pm. Se agregará un itinerario exacto de los eventos, junto con la hora de llegada esperada, al sitio más cerca de la boda.'
   }
