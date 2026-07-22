@@ -75,6 +75,13 @@ const faqs = [
     qes: '¿Dónde será la ceremonia y recepción?',
     a: 'The ceremony will be on the outdoor patio of the Mansion, not on the grass, so heels are totally fine! The reception will be held inside.',
     aes: 'La ceremonia será en el patio exterior de la Mansión, no en el césped, ¡así que los tacones están perfectos! La recepción será adentro.'
+  },
+  {
+    num: '10',
+    q: 'What times does it start and end?',
+    qes: '¿A qué hora empieza y termina?',
+    a: "Start time is at 4pm, and it will end at 10pm. An exact timeline of events, along with the expected time of arrival, will be added to the site closer to the wedding.",
+    aes: 'La hora de inicio es a las 4pm y termina a las 10pm. Se agregará un itinerario exacto de los eventos, junto con la hora de llegada esperada, al sitio más cerca de la boda.'
   }
 ];
 
