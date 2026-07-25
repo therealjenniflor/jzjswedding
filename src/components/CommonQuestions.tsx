@@ -52,32 +52,13 @@ const faqs = [
   },
   {
     num: '08',
-    q: "What's the dress code?",
-    qes: '¿Cuál es el código de vestimenta?',
-    a: "Our theme is dark, neutral tones. Wear any color you'd like, or take inspiration from the 4 colors below. Please come looking your absolute best! And no, it doesn't have to be one of these four. We're not trying to put the whole rainbow on here, but you get the idea.",
-    aesIntro: '¡Nuestro tema son los tonos oscuros y neutros! Usa el color que quieras, o inspírate en los 4 colores a continuación. ¡Por favor ven luciendo lo mejor de ti!',
-    aes: '',
-    swatches: [
-      { hex: '#111111', name: 'Black' },
-      { hex: '#0E1E07', name: 'Forest Green' },
-      { hex: '#1e0a2e', name: 'Deep Plum' },
-      { hex: '#3d0c14', name: 'Burgundy' },
-    ],
-    avoidSwatches: [
-      { hex: '#061428', name: 'Navy' },
-      { hex: '#6B2900', name: 'Burnt Sienna' },
-      { hex: '#ffffff', name: 'Any Shade or Tone of White', darkX: true },
-    ],
-  },
-  {
-    num: '09',
     q: 'Where will the ceremony and reception take place?',
     qes: '¿Dónde será la ceremonia y recepción?',
     a: 'The ceremony will be on the outdoor patio of the Mansion, not on the grass, so heels are totally fine! The reception will be held inside.',
     aes: 'La ceremonia será en el patio exterior de la Mansión, no en el césped, ¡así que los tacones están perfectos! La recepción será adentro.'
   },
   {
-    num: '10',
+    num: '09',
     q: 'What time does the wedding reception begin?',
     qes: '¿A qué hora comienza la recepción de la boda?',
     a: "Start time is at 4pm, and it will end at 10pm. An exact timeline of events, along with the expected time of arrival, will be added to the site closer to the wedding.",
