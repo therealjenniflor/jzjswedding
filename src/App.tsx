@@ -4,6 +4,7 @@ import { otomiUrl, otomiStripUrl, P } from './utils/otomi';
 import Hero from './components/Hero';
 import DateCard from './components/DateCard';
 import NuestroDia from './components/NuestroDia';
+import TheDay from './components/TheDay';
 import DressCode from './components/DressCode';
 // import WhereToStay from './components/WhereToStay'; // hidden for now, re-enable when ready
 import CommonQuestions from './components/CommonQuestions';
@@ -28,6 +29,7 @@ function HomePage() {
         <img src="images/tiles.png" alt="" />
       </div>
       {/* <WhereToStay /> */}
+      <TheDay />
       <DressCode />
       <CommonQuestions />
       <StayTuned />

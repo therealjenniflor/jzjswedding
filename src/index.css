@@ -533,6 +533,14 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   margin: 0 auto;
   text-align: center;
 }
+.dress-code-section .section-title h2 {
+  font-family: var(--ff-script);
+  font-weight: 400;
+  font-size: 84px;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1;
+}
 .dress-code__theme {
   margin-top: 36px;
   text-align: center;
@@ -791,13 +799,33 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   gap: 22px;
 }
 .the-day__title {
-  font-family: var(--ff-serif);
-  font-weight: 500;
-  font-size: 36px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
+  font-family: var(--ff-script);
+  font-weight: 400;
+  font-size: 84px;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1;
   color: #f5ecdc;
   margin: 0;
+}
+.the-day__title-dot {
+  font-size: 42px;
+}
+.the-day__note {
+  margin-top: 56px;
+  text-align: center;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  line-height: 1.8;
+  color: #f5ecdc;
+  opacity: 0.7;
+}
+.the-day__note--es {
+  margin-top: 6px;
+  font-size: 10px;
+  opacity: 0.65;
 }
 .the-day__divider {
   display: flex;
