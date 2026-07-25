@@ -580,7 +580,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   align-items: flex-start;
   justify-content: center;
   gap: 40px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .dress-code__swatch {
   display: flex;
