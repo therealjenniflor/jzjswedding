@@ -1,5 +1,15 @@
 const hotels = [
   {
+    name: 'Holiday Inn Express El Dorado Hills',
+    addr1: '4360 Town Center Blvd',
+    addr2: 'El Dorado Hills, CA',
+    desc: 'A comfortable, modern option about 25 minutes from the venue, near shops and restaurants.',
+    photo: 'images/holiday-in-dorado-hills.jpg',
+    url: 'https://www.ihg.com/holidayinnexpress/hotels/us/en/el-dorado-hills/edhls/hoteldetail',
+    label: "Where we're staying",
+    labelEs: 'Donde nos hospedamos',
+  },
+  {
     name: 'Best Western Plus Placerville Inn',
     addr1: '6850 Green Leaf Dr',
     addr2: 'Placerville, CA',
@@ -14,14 +24,7 @@ const hotels = [
     desc: 'A budget-friendly option about 10 minutes from the mansion, with free breakfast and parking.',
     photo: 'images/hotel-quality-inn-cameron-park.jpg',
     url: 'https://www.choicehotels.com/california/cameron-park/quality-inn-hotels/ca958',
-  },
-  {
-    name: 'Oak Ridge Inn',
-    addr1: '17674 Village Drive',
-    addr2: 'Plymouth, CA',
-    desc: 'A quiet wine-country retreat about 30 minutes away, set among the vineyards of Amador County.',
-    photo: 'images/hotel-oak-ridge-inn.jpg',
-    url: 'https://www.theoakridgeinn.com/',
+    photoPosition: 'left center',
   },
   {
     name: 'Holiday Inn Sacramento Rancho Cordova by IHG',
@@ -53,13 +56,19 @@ export default function WhereToStay() {
 
         <div className="stay-section__grid">
           {hotels.map(h => (
-            <a className="stay-card" key={h.name} href={h.url} target="_blank" rel="noopener noreferrer">
+            <a className={`stay-card${h.label ? ' stay-card--featured' : ''}`} key={h.name} href={h.url} target="_blank" rel="noopener noreferrer">
               <div className="stay-card__photo-frame">
                 <div className="stay-card__photo-wrap">
-                  <img className="stay-card__photo" src={h.photo} alt={h.name} />
+                  <img className="stay-card__photo" src={h.photo} alt={h.name} style={h.photoPosition ? { objectPosition: h.photoPosition } : undefined} />
                 </div>
                 <span className="stay-card__keystone" aria-hidden="true"></span>
               </div>
+              {h.label && (
+                <div className="stay-card__our-pick">
+                  <span>{h.label}</span>
+                  <span className="stay-card__our-pick-es">{h.labelEs}</span>
+                </div>
+              )}
               <div className="stay-card__name">{h.name}</div>
               <div className="stay-card__rule"></div>
               <div className="stay-card__addr">{h.addr1}<br />{h.addr2}</div>

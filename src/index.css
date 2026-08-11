@@ -904,7 +904,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 
 /* ─── Where to Stay ──────────────────────────────────────── */
 .stay-section {
-  background: #0d1c33;
+  background: #0d0810;
   color: #f5ecdc;
   padding: 100px 56px 110px;
 }
@@ -931,8 +931,8 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 }
 .stay-card {
   display: block;
-  background: #06101f;
-  border: 1px solid #2a4a7a;
+  background: #120a18;
+  border: 1px solid #3a2050;
   padding: 26px 26px 36px;
   text-align: center;
   text-decoration: none;
@@ -942,6 +942,10 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 .stay-card:hover {
   border-color: #e8761f;
   transform: translateY(-3px);
+}
+.stay-card--featured {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
 }
 .stay-card__photo-frame {
   position: relative;
@@ -964,6 +968,26 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   width: 14px; height: 14px;
   background: #e8761f;
   border: 1px solid #06101f;
+}
+.stay-card__our-pick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18px;
+  gap: 4px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.stay-card__our-pick-es {
+  font-style: italic;
+  font-size: 14px;
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+  text-transform: none;
 }
 .stay-card__name {
   margin-top: 26px;

@@ -6,7 +6,7 @@ import DateCard from './components/DateCard';
 import NuestroDia from './components/NuestroDia';
 import TheDay from './components/TheDay';
 import DressCode from './components/DressCode';
-// import WhereToStay from './components/WhereToStay'; // hidden for now, re-enable when ready
+import WhereToStay from './components/WhereToStay';
 import CommonQuestions from './components/CommonQuestions';
 import StayTuned from './components/StayTuned';
 import Footer from './components/Footer';
@@ -28,8 +28,11 @@ function HomePage() {
       <div className="picado-border" aria-hidden="true">
         <img src="images/tiles.png" alt="" />
       </div>
-      {/* <WhereToStay /> */}
       <TheDay />
+      <div className="picado-border" aria-hidden="true">
+        <img src="images/tiles.png" alt="" />
+      </div>
+      <WhereToStay />
       <DressCode />
       <CommonQuestions />
       <StayTuned />
