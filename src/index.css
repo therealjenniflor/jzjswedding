@@ -161,7 +161,6 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   border-radius: 2px;
   transition: background .2s;
 }
-.hero__registry-btn:hover { background: #e0a055; }
 
 /* ─── Tile Block ─────────────────────────────────────────── */
 .tile-block {
@@ -2200,10 +2199,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   transition: background .2s, color .2s;
   margin-bottom: 20px;
 }
-.registry-venmo__btn:hover {
-  background: var(--gold);
-  color: #0a0402;
-}
+
 .registry-venmo__note {
   font-family: 'Source Sans 3', sans-serif;
   font-style: italic;
