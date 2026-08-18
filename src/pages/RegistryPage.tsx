@@ -42,7 +42,7 @@ export default function RegistryPage() {
         <section className="registry-dogs">
           <h2 className="registry-dogs__title">But if you insist…</h2>
           <p className="registry-dogs__body">
-            Meet Zeus, Mia, and Otis Redding, our three dogs, our chaos, our joy. Together they run us about
+            Meet Zeus, Mia, and Otis Redding, our three dogs, our chaos, our joy. Together they can run us about
             <strong> $1,000 a month</strong> in vet bills, grooming, food, and general mischief. If you'd like
             to contribute to their very expensive little lives, we won't stop you.
           </p>
