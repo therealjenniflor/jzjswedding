@@ -2,7 +2,7 @@ const dogs = [
   {
     name: 'Zeus',
     photo: 'images/reg-zeus-2.jpg',
-    desc: 'Eldest brother and King of the house. Blind, wise, and deeply committed to eating any scraps he can find. Costs a fortune in medication alone.',
+    desc: 'First born, thus the King of the house and mama\'s favorite. Semi-blind, energetic when food is involved, and deeply committed to eating any scraps he can find. Costs a fortune in medication alone.',
   },
   {
     name: 'Mia',
