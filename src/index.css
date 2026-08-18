@@ -96,6 +96,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 .hero__overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,.18) 0%,
@@ -142,6 +143,25 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   text-shadow: 0 1px 12px rgba(0,0,0,.3);
 }
 .hero__tiles { display: none; }
+.hero__registry-btn {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 8px 20px;
+  background: var(--gold);
+  color: #0a0402;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background .2s;
+}
+.hero__registry-btn:hover { background: #e0a055; }
 
 /* ─── Tile Block ─────────────────────────────────────────── */
 .tile-block {
@@ -2026,4 +2046,173 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 @media (max-width: 560px) {
   .rsvp-video-modal { padding: 8px; }
   .rsvp-video-close { top: -14px; right: -6px; width: 32px; height: 32px; font-size: 19px; }
+}
+
+/* ─── Registry Page ──────────────────────────────────────────── */
+.registry-page {
+  min-height: 100vh;
+  background: linear-gradient(rgba(10,4,2,.88), rgba(10,4,2,.88)), url('/images/wedgewood.jpg') center/cover no-repeat fixed;
+  color: #f5ecdc;
+  padding-bottom: 100px;
+}
+.registry-page__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.registry-header {
+  text-align: center;
+  padding-top: 100px;
+}
+.registry-eyebrow {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 16px;
+}
+.registry-title {
+  font-family: var(--ff-script);
+  font-size: 96px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 28px;
+  color: #f5ecdc;
+}
+.registry-subtitle {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(245,236,220,.75);
+  margin: 0 0 10px;
+}
+.registry-subtitle--es {
+  font-style: italic;
+  font-size: 17px;
+  color: rgba(245,236,220,.55);
+}
+.registry-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0;
+}
+.registry-divider__line {
+  flex: 1;
+  height: 1px;
+  background: rgba(245,236,220,.2);
+}
+.registry-divider__paw {
+  font-size: 22px;
+  opacity: 1;
+}
+.registry-dogs__title {
+  font-family: var(--ff-serif);
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 20px;
+  letter-spacing: 0.04em;
+}
+.registry-dogs__body {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.7;
+  text-align: center;
+  color: rgba(245,236,220,.8);
+  margin: 0 0 10px;
+}
+.registry-dogs__body--es {
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(245,236,220,.5);
+  margin-bottom: 52px;
+}
+.registry-dogs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 64px;
+}
+.registry-dog-card {
+  text-align: center;
+}
+.registry-dog-card__photo-wrap {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: 120px 120px 12px 12px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(245,236,220,.12);
+}
+.registry-dog-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.registry-dog-card__name {
+  font-family: var(--ff-serif);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: #f5ecdc;
+}
+.registry-dog-card__desc {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(245,236,220,.6);
+  margin: 0;
+}
+.registry-venmo {
+  text-align: center;
+  padding: 48px 0 0;
+  border-top: 1px solid rgba(245,236,220,.1);
+}
+.registry-venmo__label {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,236,220,.5);
+  margin: 0 0 18px;
+}
+.registry-venmo__btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background .2s, color .2s;
+  margin-bottom: 20px;
+}
+.registry-venmo__btn:hover {
+  background: var(--gold);
+  color: #0a0402;
+}
+.registry-venmo__note {
+  font-family: 'Source Sans 3', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(245,236,220,.4);
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .registry-title { font-size: 64px; }
+  .registry-dogs__grid { grid-template-columns: 1fr; max-width: 280px; margin-inline: auto; }
 }

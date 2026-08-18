@@ -11,6 +11,7 @@ import CommonQuestions from './components/CommonQuestions';
 import StayTuned from './components/StayTuned';
 import Footer from './components/Footer';
 import RSVPPage from './pages/RSVPPage';
+import RegistryPage from './pages/RegistryPage';
 
 function HomePage() {
   useEffect(() => {
@@ -46,6 +47,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/rsvp" element={<RSVPPage />} />
+      <Route path="/registry" element={<RegistryPage />} />
     </Routes>
   );
 }

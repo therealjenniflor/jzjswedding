@@ -1,6 +1,7 @@
 export default function Hero() {
   return (
     <section className="hero" id="hero">
+      <a href="/registry" className="hero__registry-btn">Registry</a>
       <img id="hero-bg-img" className="hero__bg" src="images/hero.jpg" alt="" />
       <div className="hero__overlay"></div>
       <div className="hero__inner">
