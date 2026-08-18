@@ -66,12 +66,9 @@ export default function RegistryPage() {
 
           <div className="registry-venmo">
             <p className="registry-venmo__label">Send your love via Zelle</p>
-            <a
-              className="registry-venmo__btn"
-              href="tel:6503153005"
-            >
+            <span className="registry-venmo__btn">
               650-315-3005
-            </a>
+            </span>
             <p className="registry-venmo__note">No pressure, really. But if anything… Otis isn't covered by insurance.</p>
           </div>
         </section>
