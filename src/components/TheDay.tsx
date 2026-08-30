@@ -3,9 +3,9 @@ export default function TheDay() {
     <section className="the-day-section">
       <div className="the-day__inner">
         <div className="the-day__section-title">
-          <img src="images/marigold.png" alt="" style={{ width: '44px', height: '44px', objectFit: 'contain' }} />
+          <img src="images/marigold.png" alt="" style={{ width: '44px', height: '44px', objectFit: 'contain' }} loading="lazy" decoding="async" />
           <h2 className="the-day__title">El Día <span className="the-day__title-dot">·</span> The Day</h2>
-          <img src="images/marigold.png" alt="" style={{ width: '44px', height: '44px', objectFit: 'contain' }} />
+          <img src="images/marigold.png" alt="" style={{ width: '44px', height: '44px', objectFit: 'contain' }} loading="lazy" decoding="async" />
         </div>
         <div className="the-day__divider">
           <span className="the-day__divider-line"></span>

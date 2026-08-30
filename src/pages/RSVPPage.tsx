@@ -259,7 +259,7 @@ export default function RSVPPage() {
           onAnimationEnd={e => { if (e.animationName === 'pinata-burst') e.currentTarget.classList.remove('rsvp-pinata--burst'); }}
         >
           <div className="rsvp-pinata__string" />
-          <img src="/images/pinata.png" alt="Wedding piñata" />
+          <img src="/images/pinata.png" alt="Wedding piñata" loading="lazy" decoding="async" />
         </div>
 
         <div className="rsvp-card" ref={cardRef}>
@@ -497,9 +497,9 @@ export default function RSVPPage() {
           {phase === 'success' && (
             <div className="rsvp-state rsvp-state--success">
               <div className="rsvp-state__floretes">
-                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" />
-                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" />
-                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" />
+                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" loading="lazy" decoding="async" />
+                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" loading="lazy" decoding="async" />
+                <img src="/images/marigold.png" alt="" aria-hidden="true" className="rsvp-state__marigold" loading="lazy" decoding="async" />
               </div>
               <p className="rsvp-state__title">{t.successTitle(attending)}</p>
               <p className="rsvp-state__body">{t.successBody(attending)}</p>
@@ -524,9 +524,9 @@ export default function RSVPPage() {
         {phase === 'success' && attending === true && (
           <footer className="rsvp-page-footer">
             <div className="rsvp-footer-dogs">
-              <img src="/images/zeus.png" alt="Zeus" className="rsvp-footer-dog" />
-              <img src="/images/mia.png" alt="Mia" className="rsvp-footer-dog" />
-              <img src="/images/otis.png" alt="Otis" className="rsvp-footer-dog" />
+              <img src="/images/zeus.png" alt="Zeus" className="rsvp-footer-dog" loading="lazy" decoding="async" />
+              <img src="/images/mia.png" alt="Mia" className="rsvp-footer-dog" loading="lazy" decoding="async" />
+              <img src="/images/otis.png" alt="Otis" className="rsvp-footer-dog" loading="lazy" decoding="async" />
             </div>
             <p className="rsvp-footer-dogs-note">{t.dogsNote}</p>
           </footer>

@@ -27,11 +27,11 @@ function HomePage() {
       <DateCard />
       <NuestroDia />
       <div className="picado-border" aria-hidden="true">
-        <img src="images/tiles.png" alt="" />
+        <img src="images/tiles.png" alt="" loading="lazy" decoding="async" />
       </div>
       <TheDay />
       <div className="picado-border" aria-hidden="true">
-        <img src="images/tiles.png" alt="" />
+        <img src="images/tiles.png" alt="" loading="lazy" decoding="async" />
       </div>
       <WhereToStay />
       <DressCode />

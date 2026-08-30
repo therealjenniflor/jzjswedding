@@ -42,9 +42,9 @@ export default function WhereToStay() {
       <div className="stay-section__inner">
         <div className="section-title section-title--light">
           <div className="section-title__row">
-            <img src="images/marigold.png" alt="" style={{ width: '44px', height: '44px', objectFit: 'contain' }} />
+            <img src="images/marigold.png" alt="" style={{ width: '44px', height: '44px', objectFit: 'contain' }} loading="lazy" decoding="async" />
             <h2>Where to Stay</h2>
-            <img src="images/marigold.png" alt="" style={{ width: '44px', height: '44px', objectFit: 'contain' }} />
+            <img src="images/marigold.png" alt="" style={{ width: '44px', height: '44px', objectFit: 'contain' }} loading="lazy" decoding="async" />
           </div>
           <div className="section-title__rule">
             <span className="section-title__line"></span>
@@ -59,7 +59,7 @@ export default function WhereToStay() {
             <a className={`stay-card${h.label ? ' stay-card--featured' : ''}`} key={h.name} href={h.url} target="_blank" rel="noopener noreferrer">
               <div className="stay-card__photo-frame">
                 <div className="stay-card__photo-wrap">
-                  <img className="stay-card__photo" src={h.photo} alt={h.name} style={h.photoPosition ? { objectPosition: h.photoPosition } : undefined} />
+                  <img className="stay-card__photo" src={h.photo} alt={h.name} loading="lazy" decoding="async" style={h.photoPosition ? { objectPosition: h.photoPosition } : undefined} />
                 </div>
                 <span className="stay-card__keystone" aria-hidden="true"></span>
               </div>

@@ -40,7 +40,7 @@ export default function NuestroDia() {
         <div className="nuestro-dia__cantuta" aria-hidden="true"></div>
         <div className="nuestro-dia__vignette" aria-hidden="true"></div>
         <div className="nuestro-dia__picado-row" aria-hidden="true">
-          <img src="images/papel-picado-5.png" alt="" />
+          <img src="images/papel-picado-5.png" alt="" loading="lazy" decoding="async" />
         </div>
 
         {/* Language toggle — outside scroll, stays fixed */}

@@ -56,7 +56,7 @@ export default function RegistryPage() {
             {dogs.map(dog => (
               <div className="registry-dog-card" key={dog.name}>
                 <div className="registry-dog-card__photo-wrap">
-                  <img src={dog.photo} alt={dog.name} className="registry-dog-card__photo" />
+                  <img src={dog.photo} alt={dog.name} className="registry-dog-card__photo" loading="lazy" decoding="async" />
                 </div>
                 <div className="registry-dog-card__name">{dog.name}</div>
                 <p className="registry-dog-card__desc">{dog.desc}</p>

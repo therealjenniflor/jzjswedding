@@ -35,6 +35,8 @@ export default function DateCard() {
                     className="date-card__photo"
                     src={src}
                     alt={`Couple photo ${i + 1}`}
+                    loading={i <= 1 ? 'eager' : 'lazy'}
+                    decoding="async"
                     style={{
                       position: 'absolute',
                       top: 0,
@@ -67,6 +69,8 @@ export default function DateCard() {
             <img
               src="images/llama-small-1.png"
               alt=""
+              loading="lazy"
+              decoding="async"
               style={{ width: '90px', marginBottom: '16px', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.3))' }}
             />
             <div className="date-card__date">October 30<sup>th</sup></div>
@@ -82,7 +86,7 @@ export default function DateCard() {
           </div>
         </div>
       </div>
-      <img className="date-card__calla" src="images/calla-lillies-1.png" alt="" />
+      <img className="date-card__calla" src="images/calla-lillies-1.png" alt="" loading="lazy" decoding="async" />
     </section>
   );
 }
