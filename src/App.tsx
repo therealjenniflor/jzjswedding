@@ -12,6 +12,9 @@ import StayTuned from './components/StayTuned';
 import Footer from './components/Footer';
 import RSVPPage from './pages/RSVPPage';
 import RegistryPage from './pages/RegistryPage';
+import TimelinePage from './pages/TimelinePage';
+import BridalTimelinePage from './pages/BridalTimelinePage';
+import GroomsmenTimelinePage from './pages/GroomsmenTimelinePage';
 
 function HomePage() {
   useEffect(() => {
@@ -48,6 +51,10 @@ export default function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/rsvp" element={<RSVPPage />} />
       <Route path="/registry" element={<RegistryPage />} />
+      {/* Unlisted: shared directly with the wedding party, not linked anywhere */}
+      <Route path="/timeline" element={<TimelinePage />} />
+      <Route path="/timeline-bridal" element={<BridalTimelinePage />} />
+      <Route path="/timeline-groomsmen" element={<GroomsmenTimelinePage />} />
     </Routes>
   );
 }
