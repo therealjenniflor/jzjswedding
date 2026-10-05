@@ -31,12 +31,11 @@ function initialLang(): Lang {
   return navigator.language.toLowerCase().startsWith('es') ? 'es' : 'en';
 }
 
-function fmt(mins: number, lang: Lang) {
+function fmt(mins: number) {
   const h = Math.floor(mins / 60);
   const m = mins % 60;
   const h12 = h % 12 === 0 ? 12 : h % 12;
-  const suffix = lang === 'es' ? (h < 12 ? 'a. m.' : 'p. m.') : (h < 12 ? 'AM' : 'PM');
-  return `${h12}:${String(m).padStart(2, '0')} ${suffix}`;
+  return `${h12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`;
 }
 
 // Minutes since midnight in Pacific time, but only on the wedding day.
@@ -143,9 +142,9 @@ export default function Timeline({ copy, sections, back, nameFirst }: Props) {
                 >
                   <span className="timeline-item__dot" aria-hidden="true" />
                   <div className="timeline-item__time">
-                    {fmt(e.start, lang)}
+                    {fmt(e.start)}
                     {e.end !== undefined && (
-                      <span className="timeline-item__end">– {fmt(e.end, lang)}</span>
+                      <span className="timeline-item__end">– {fmt(e.end)}</span>
                     )}
                   </div>
                   <div className="timeline-item__name">

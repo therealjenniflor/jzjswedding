@@ -13,7 +13,7 @@ const copy: TimelineCopy = {
     eyebrow: 'Jennifer & Jhonatan · Padrinos',
     title: 'Los Padrinos',
     date: 'Viernes · 30 de octubre de 2026 · Wild Ones Salon',
-    note: 'Todos en Sequoia Mansion a la 1:00 p. m.',
+    note: 'Todos en Sequoia Mansion a la 1:00 PM',
   },
 };
 

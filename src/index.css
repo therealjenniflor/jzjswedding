@@ -2310,7 +2310,7 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
 .timeline-item {
   position: relative;
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 170px 1fr;
   gap: 16px;
   padding: 10px 0;
   align-items: baseline;

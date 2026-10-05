@@ -13,7 +13,7 @@ const copy: TimelineCopy = {
     eyebrow: 'Jennifer & Jhonatan · Damas de Honor',
     title: 'Peinado y Maquillaje',
     date: 'Viernes · 30 de octubre de 2026 · 72 Rio',
-    note: 'Todos los servicios terminarán a las 12:45 p. m.',
+    note: 'Todos los servicios terminarán a las 12:45 PM',
   },
 };
 
