@@ -140,7 +140,7 @@ export default function TheDay() {
             <div className="the-day__label">party</div>
           </div>
 
-          {/* Hometime */}
+          {/* Grand Exit */}
           <div className="the-day__item">
             <div className="the-day__niche">
               <svg width="64" height="58" viewBox="0 0 52 44" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
@@ -154,16 +154,38 @@ export default function TheDay() {
               <span className="the-day__keystone" aria-hidden="true"></span>
             </div>
             <div className="the-day__time">10 PM</div>
-            <div className="the-day__label">hometime</div>
+            <div className="the-day__label">grand exit</div>
           </div>
 
         </div>
-        <p className="the-day__note">
-          This is a rough general schedule, subject to change slightly.
-        </p>
-        <p className="the-day__note the-day__note--es">
-          Este es un horario general aproximado, sujeto a cambios ligeros.
-        </p>
+
+        {/* After Party */}
+        <div className="the-day__after">
+          <span className="the-day__keystone" aria-hidden="true"></span>
+          <div className="the-day__after-eyebrow">The After Party · El After Party</div>
+          <div className="the-day__after-title">Karaoke at Red Hawk Casino</div>
+          <div className="the-day__time">10 PM – 12 AM</div>
+          <p className="the-day__after-body">
+            The party doesn't stop at the grand exit! We're heading straight to Red Hawk Casino for karaoke. Everyone is welcome to come and sing (or just cheer us on).
+          </p>
+          <p className="the-day__after-body the-day__after-body--es">
+            ¡La fiesta no termina con la gran salida! Nos vamos directo a Red Hawk Casino para el karaoke. Todos son bienvenidos a cantar (o simplemente a echarnos porras).
+          </p>
+          <div className="the-day__after-addr">1 Red Hawk Pkwy, Placerville, CA 95667</div>
+          <div className="the-day__after-links">
+            <a
+              className="the-day__after-btn"
+              href="https://www.google.com/maps/search/?api=1&query=Red+Hawk+Casino+1+Red+Hawk+Pkwy+Placerville+CA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Directions · Cómo llegar
+            </a>
+            <a className="the-day__after-link" href="images/redhawk-room.jpg" target="_blank" rel="noopener noreferrer">
+              Where to find the room · Dónde encontrar el salón
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

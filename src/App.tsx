@@ -8,7 +8,6 @@ import TheDay from './components/TheDay';
 import DressCode from './components/DressCode';
 import WhereToStay from './components/WhereToStay';
 import CommonQuestions from './components/CommonQuestions';
-import StayTuned from './components/StayTuned';
 import Footer from './components/Footer';
 import RSVPPage from './pages/RSVPPage';
 import RegistryPage from './pages/RegistryPage';
@@ -39,7 +38,6 @@ function HomePage() {
       <WhereToStay />
       <DressCode />
       <CommonQuestions />
-      <StayTuned />
       <Footer />
     </>
   );
