@@ -26,19 +26,20 @@ const sections: TimelineSection[] = [
   {
     title: { en: 'Hairstylist', es: 'Estilista' },
     events: [
-      { name: arrival, start: t(5, 50) },
-      { name: hair('Karlee'), start: t(6), end: t(6, 45) },
-      { name: hair('Naomi'), start: t(6, 45), end: t(7, 30) },
-      { name: hair('Gaby'), start: t(7, 30), end: t(8, 15) },
-      { name: both('Magdalena'), start: t(8, 15), end: t(9, 45) },
-      { name: both('Jennifer'), start: t(9, 45), end: t(12) },
-      { name: hair('Teresa'), start: t(12), end: t(12, 45) },
+      { name: arrival, start: t(5, 30), end: t(5, 40) },
+      { name: hair('Karlee'), start: t(5, 40), end: t(6, 25) },
+      { name: hair('Naomi'), start: t(6, 25), end: t(7, 10) },
+      { name: hair('Amelia'), start: t(7, 10), end: t(7, 50) },
+      { name: hair('Gaby'), start: t(7, 50), end: t(8, 30) },
+      { name: both('Magdalena'), start: t(8, 30), end: t(9, 55) },
+      { name: both('Jennifer'), start: t(9, 55), end: t(12, 10) },
+      { name: hair('Teresa'), start: t(12, 10), end: t(12, 45) },
     ],
   },
   {
     title: { en: 'Second Makeup Artist', es: 'Segunda maquillista' },
     events: [
-      { name: arrival, start: t(8, 5) },
+      { name: arrival, start: t(8, 5), end: t(8, 15) },
       { name: makeup('Karlee'), start: t(8, 15), end: t(9, 15) },
       { name: makeup('Amelia'), start: t(9, 15), end: t(10, 15) },
       { name: makeup('Teresa'), start: t(10, 15), end: t(11, 15) },

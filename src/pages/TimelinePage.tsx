@@ -23,7 +23,7 @@ const sections: TimelineSection[] = [
     events: [
       {
         name: { en: 'Bridal Party Gets Ready', es: 'Las damas se preparan' },
-        start: t(5, 55),
+        start: t(5, 30),
         end: t(12, 45),
         place: '72 Rio',
         link: { to: '/timeline-bridal', label: { en: 'Hair & makeup schedule', es: 'Horario de peinado y maquillaje' } },
@@ -41,8 +41,8 @@ const sections: TimelineSection[] = [
   {
     title: { en: 'Vendors On Site', es: 'Proveedores' },
     events: [
-      { name: { en: 'DJ', es: 'DJ' }, start: t(15), end: t(22) },
       { name: { en: 'Photographer', es: 'Fotógrafo' }, start: t(15), end: t(22) },
+      { name: { en: 'DJ', es: 'DJ' }, start: t(15, 30), end: t(22) },
       { name: { en: 'Mariachi', es: 'Mariachi' }, start: t(15, 30), end: t(17, 30) },
     ],
   },
@@ -60,21 +60,21 @@ const sections: TimelineSection[] = [
       { name: { en: 'Grand Entrance', es: 'Gran entrada' }, start: t(17, 30), end: t(17, 35) },
       { name: { en: 'Speeches (Bride/Groom)', es: 'Discursos (Novios)' }, start: t(17, 35), end: t(17, 40) },
       { name: { en: 'First Dance', es: 'Primer baile' }, start: t(17, 40), end: t(17, 45) },
+      { name: { en: 'Dance - Father/Daughter', es: 'Baile - Padre/Hija' }, start: t(17, 45), end: t(17, 50) },
       { name: { en: 'Buffet Service', es: 'Servicio de buffet' }, start: t(17, 45), end: t(18, 30) },
-      { name: { en: 'Speeches (Amelia, Carlos)', es: 'Discursos (Amelia, Carlos)' }, start: t(18, 30), end: t(18, 40) },
-      { name: { en: 'Salazar Fam - Get Ready', es: 'Familia Salazar - Prepararse' }, start: t(18, 30), end: t(18, 45) },
-      { name: { en: 'Dance - Father/Daughter', es: 'Baile - Padre/Hija' }, start: t(18, 40), end: t(18, 45) },
-      { name: { en: 'Speeches (MOHs)', es: 'Discursos (Damas de honor)' }, start: t(18, 45), end: t(18, 55) },
+      { name: { en: 'Speeches (Amelia, Carlos)', es: 'Discursos (Amelia, Carlos)' }, start: t(18, 30), end: t(18, 50) },
+      { name: { en: 'Speeches (Naomi, Karlee)', es: 'Discursos (Naomi, Karlee)' }, start: t(18, 30), end: t(18, 50) },
+      { name: { en: 'Speeches (Mike, Kevin)', es: 'Discursos (Mike, Kevin)' }, start: t(18, 30), end: t(18, 50) },
       { name: { en: 'Dessert Service', es: 'Servicio de postres' }, start: t(18, 45), end: t(19, 30) },
-      { name: { en: 'Dance - Mother/Son', es: 'Baile - Madre/Hijo' }, start: t(18, 55), end: t(19) },
-      { name: { en: 'Speeches (BMs)', es: 'Discursos (Padrinos)' }, start: t(19), end: t(19, 10) },
-      { name: { en: 'Peruvian Dancers', es: 'Bailarines peruanos' }, start: t(19, 10), end: t(19, 25) },
+      { name: { en: 'Salazar Fam - Get Ready', es: 'Familia Salazar - Prepararse' }, start: t(18, 50), end: t(19) },
+      { name: { en: 'Dance - Mother/Son', es: 'Baile - Madre/Hijo' }, start: t(19), end: t(19, 10) },
+      { name: { en: 'Peruvian Dancers', es: 'Bailarines peruanos' }, start: t(19, 10), end: t(19, 20) },
     ],
   },
   {
     title: { en: 'Fiesta', es: 'Fiesta' },
     events: [
-      { name: { en: 'Open Dancing', es: 'Pista de baile abierta' }, start: t(19, 30), end: t(22) },
+      { name: { en: 'Open Dancing', es: 'Pista de baile abierta' }, start: t(19, 20), end: t(22) },
       { name: { en: 'Plushy Toss', es: 'Lanzamiento de peluche' }, start: t(20, 25), end: t(20, 35) },
       { name: { en: 'Piñata', es: 'Piñata' }, start: t(20, 35), end: t(21) },
       { name: { en: 'Private Last Dance', es: 'Último baile privado' }, start: t(21, 55), end: t(22) },
