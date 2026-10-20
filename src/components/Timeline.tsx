@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { fmt } from '../utils/time';
 
 // Shared layout for the unlisted wedding-day timeline pages.
 // Times are minutes after midnight on Oct 30, 2026 (Pacific).
@@ -11,8 +12,17 @@ export type TimelineEvent = {
   end?: number;
   place?: string;
   link?: { to: string; label: Text };
+  // Downplayed row, e.g. free time between appointments.
+  muted?: boolean;
 };
-export type TimelineSection = { title: Text; events: TimelineEvent[] };
+export type TimelineSection = {
+  title: Text;
+  // Shown beside the title; `highlight` stands out ahead of `subtitle`.
+  highlight?: Text;
+  subtitle?: Text;
+  events: TimelineEvent[];
+};
+export type TimelineView = { label: Text; sections: TimelineSection[] };
 export type TimelineCopy = Record<Lang, {
   eyebrow: string;
   title: string;
@@ -29,13 +39,6 @@ function initialLang(): Lang {
     if (saved === 'en' || saved === 'es') return saved;
   } catch { /* storage unavailable */ }
   return navigator.language.toLowerCase().startsWith('es') ? 'es' : 'en';
-}
-
-function fmt(mins: number) {
-  const h = Math.floor(mins / 60);
-  const m = mins % 60;
-  const h12 = h % 12 === 0 ? 12 : h % 12;
-  return `${h12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`;
 }
 
 // Minutes since midnight in Pacific time, but only on the wedding day.
@@ -67,15 +70,22 @@ function useNoIndex(title: string) {
 
 type Props = {
   copy: TimelineCopy;
-  sections: TimelineSection[];
   back?: { to: string; label: Text };
   // Put the event name in the left column and the time on the right.
   nameFirst?: boolean;
-};
+} & (
+  | { sections: TimelineSection[] }
+  // Several ways to slice the same schedule, switchable with a toggle.
+  | { views: TimelineView[] }
+);
 
-export default function Timeline({ copy, sections, back, nameFirst }: Props) {
+export default function Timeline(props: Props) {
+  const { copy, back, nameFirst } = props;
+  const views = 'views' in props ? props.views : [{ label: { en: '', es: '' }, sections: props.sections }];
   const [now, setNow] = useState(weddingDayMinutes);
   const [lang, setLang] = useState<Lang>(initialLang);
+  const [viewIdx, setViewIdx] = useState(0);
+  const sections = views[viewIdx].sections;
   const text = copy[lang];
   useNoIndex(text.title);
 
@@ -127,9 +137,37 @@ export default function Timeline({ copy, sections, back, nameFirst }: Props) {
           </div>
         </header>
 
+        {views.length > 1 && (
+          <div className="timeline-views" role="group" aria-label={lang === 'es' ? 'Vista' : 'View'}>
+            {views.map((v, i) => (
+              <button
+                key={v.label.en}
+                type="button"
+                className={'timeline-lang__btn' + (viewIdx === i ? ' timeline-lang__btn--active' : '')}
+                aria-pressed={viewIdx === i}
+                onClick={() => setViewIdx(i)}
+              >
+                {v.label[lang]}
+              </button>
+            ))}
+          </div>
+        )}
+
         {sections.map(section => (
           <section className="timeline-section" key={section.title.en}>
-            <h2 className="timeline-section__title">{section.title[lang]}</h2>
+            <h2 className="timeline-section__title">
+              {section.title[lang]}
+              {(section.highlight || section.subtitle) && (
+                <span className="timeline-section__meta">
+                  {section.highlight && (
+                    <strong className="timeline-section__highlight">{section.highlight[lang]}</strong>
+                  )}
+                  {section.subtitle && (
+                    <span className="timeline-section__subtitle">{section.subtitle[lang]}</span>
+                  )}
+                </span>
+              )}
+            </h2>
             <ol className="timeline-list">
               {section.events.map(e => (
                 <li
@@ -137,7 +175,8 @@ export default function Timeline({ copy, sections, back, nameFirst }: Props) {
                   className={
                     'timeline-item' +
                     (isNow(e) ? ' timeline-item--now' : '') +
-                    (isPast(e) ? ' timeline-item--past' : '')
+                    (isPast(e) ? ' timeline-item--past' : '') +
+                    (e.muted ? ' timeline-item--muted' : '')
                   }
                 >
                   <span className="timeline-item__dot" aria-hidden="true" />

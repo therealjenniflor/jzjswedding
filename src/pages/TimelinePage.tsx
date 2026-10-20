@@ -23,8 +23,8 @@ const sections: TimelineSection[] = [
     events: [
       {
         name: { en: 'Bridal Party Gets Ready', es: 'Las damas se preparan' },
-        start: t(5, 30),
-        end: t(12, 45),
+        start: t(6, 30),
+        end: t(13, 45),
         place: '72 Rio',
         link: { to: '/timeline-bridal', label: { en: 'Hair & makeup schedule', es: 'Horario de peinado y maquillaje' } },
       },
@@ -35,7 +35,7 @@ const sections: TimelineSection[] = [
         place: 'Wild Ones Salon',
         link: { to: '/timeline-groomsmen', label: { en: 'Groomsmen schedule', es: 'Horario de los padrinos' } },
       },
-      { name: { en: 'Travel to Sequoia Mansion', es: 'Traslado a Sequoia Mansion' }, start: t(13), end: t(14) },
+      { name: { en: 'Travel to Sequoia Mansion', es: 'Traslado a Sequoia Mansion' }, start: t(13, 45), end: t(14, 30) },
     ],
   },
   {
