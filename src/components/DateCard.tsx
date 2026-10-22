@@ -74,7 +74,10 @@ export default function DateCard() {
               style={{ width: '90px', marginBottom: '16px', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.3))' }}
             />
             <div className="date-card__date">October 30<sup>th</sup></div>
-            <div className="date-card__at">4:00 PM &middot; at</div>
+            <div className="date-card__at">
+              Ceremony at 4:00pm
+              <span className="date-card__at-es">Ceremonia a las 4:00pm</span>
+            </div>
             <div className="date-card__venue">Sequoia Mansion</div>
             <div className="date-card__location">
               <span>Placerville</span>
@@ -82,6 +85,16 @@ export default function DateCard() {
               <span>California</span>
               <span className="meta-dot"></span>
               <span>2026</span>
+            </div>
+            <div className="date-card__directions">
+              <a
+                className="the-day__after-btn"
+                href="https://maps.app.goo.gl/fAjDe3GeMcpxf8Kr8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Directions · Cómo llegar
+              </a>
             </div>
           </div>
         </div>

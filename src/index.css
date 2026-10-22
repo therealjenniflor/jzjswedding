@@ -375,6 +375,12 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   color: rgba(245,236,220,.65);
   margin: 28px 0;
 }
+.date-card__at-es {
+  display: block;
+  font-size: .6em;
+  font-style: italic;
+  margin-top: 6px;
+}
 .date-card__venue {
   font-family: var(--ff-serif);
   font-weight: 500;
@@ -395,6 +401,9 @@ input::placeholder, textarea::placeholder { color: inherit; opacity: 0.4; }
   text-transform: uppercase;
   color: rgba(245,236,220,.55);
   gap: 0;
+}
+.date-card__directions {
+  margin-top: 32px;
 }
 
 /* ─── Nuestro Día Especial ───────────────────────────────── */
